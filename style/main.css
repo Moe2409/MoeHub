@@ -1,0 +1,57 @@
+:root {
+    --color: yellow;
+    --width: 35vw;
+    --backgroundColor: black;
+}
+
+body {
+    background-color: var(--backgroundColor);
+}
+
+button {
+    top: 40vw;
+    position: relative;
+}
+
+#cube {
+    width: var(--width);
+    height: var(--width);
+    background-color: var(--backgroundColor);
+    position: absolute;
+    border: 0.1vw solid white;
+}
+
+#leftEye, #rightEye, #chin {
+    position: absolute;
+    stroke: var(--color);
+    stroke-width: 20;
+    fill: transparent;
+    filter: drop-shadow(0 0 1vw yellow);
+    animation: flicker 0.05s infinite;
+}
+
+@keyframes flicker {
+    from{filter: drop-shadow(0 0 0.8vw yellow);}
+    to{filter: drop-shadow(0 0 1vw yellow);}
+}
+
+#leftEye, #rightEye {
+    width: calc(var(--width)*4/15);
+    height: calc(var(--width)*8/15);
+    top: calc(var(--width)*2/15);
+}
+
+#leftEye {
+    left: calc(var(--width)*2/15 + 0.5vw/2);
+}
+
+#rightEye {
+    right: calc(var(--width)*2/15 + 0.5vw/2);
+}
+
+#chin {
+    width: var(--width);
+    height: calc(var(--width)*5/15);
+    top: calc(var(--width)*10/15);
+}
+
