@@ -45,8 +45,8 @@ class Mouth {
     constructor(lips) {
         this.lips = lips
     }
-    animation(t, w) {
-        gsap.to("#lips", {
+    animation(lipSelector, t, w) {
+        gsap.to(`${lipSelector}`, {
             duration: t,
             attr: {d: this.lips},
             delay: w
@@ -109,14 +109,16 @@ const mouthStates = {
     normal: new Mouth("M 700 150 Q 750 150 800 150"),
     straight: new Mouth("M 650 150 Q 750 150 850 150"),
     smile: new Mouth("M 650 125 Q 750 175 850 125"),
-    bigSmile: new Mouth("M 500 10 Q 750 150 1000 10"),
+    bigSmileUpper: new Mouth("M 500 10 Q 750 150 1000 10"),
+    bigSmileUnder: new Mouth("M 500 10 Q 750 150 1000 10"),
     frown: new Mouth("M 650 175 Q 750 125 850 175"),
 };
 
 function normalAnimation(t, w) {
     eyeStates.normal.animation("#leftEye", t, w)
     eyeStates.normal.animation("#rightEye", t, w)
-    mouthStates.smile.animation(t, w)
+    mouthStates.smile.animation("#upperLip", t, w)
+    mouthStates.smile.animation("#underLip", t, w)
 };
 
 function closeAnimation(t, w) {
@@ -133,20 +135,23 @@ setInterval(blinkAnimation, 10000);
 
 function angryAnimation(t, w) {
     eyeStates.angryLeft.animation("#leftEye", t, w)
-    eyeStates.angryRight.animation("#rightEye", t, w)
-    mouthStates.frown.animation(t, w)
+    eyeStates.angryLeft.animation("#rightEye", t, w)
+    mouthStates.frown.animation("#upperLip", t, w)
+    mouthStates.frown.animation("#underLip", t, w)
 };
 
 function disgustAnimation(t, w) {
     eyeStates.disgust.animation("#leftEye", t, w)
     eyeStates.disgust.animation("#rightEye", t, w)
-    mouthStates.straight.animation(t, w)
+    mouthStates.straight.animation("#upperLip", t, w)
+    mouthStates.straight.animation("#underLip", t, w)
 };
 
 function smugAnimation(t, w) {
     eyeStates.smug.animation("#leftEye", t, w)
     eyeStates.smug.animation("#rightEye", t, w)
-    mouthStates.bigSmile.animation(t, w)
+    mouthStates.bigSmileUpper.animation("#upperLip", t, w)
+    mouthStates.bigSmileUnder.animation("#underLip", t, w)
 };
 
 const emotions = [
