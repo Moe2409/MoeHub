@@ -27,7 +27,7 @@ button {
     stroke-width: 20;
     fill: transparent;
     filter: drop-shadow(0 0 1vw yellow);
-    animation: flicker 0.05s infinite;
+    animation: flicker 0.01s infinite;
 }
 
 @keyframes flicker {
