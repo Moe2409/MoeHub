@@ -135,7 +135,7 @@ setInterval(blinkAnimation, 10000);
 
 function angryAnimation(t, w) {
     eyeStates.angryLeft.animation("#leftEye", t, w)
-    eyeStates.angryLeft.animation("#rightEye", t, w)
+    eyeStates.angryRight.animation("#rightEye", t, w)
     mouthStates.frown.animation("#upperLip", t, w)
     mouthStates.frown.animation("#underLip", t, w)
 };
