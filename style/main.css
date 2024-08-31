@@ -27,12 +27,6 @@ button {
     stroke-width: 20;
     fill: transparent;
     filter: drop-shadow(0 0 1vw yellow);
-    animation: flicker 0.01s infinite;
-}
-
-@keyframes flicker {
-    from{filter: drop-shadow(0 0 0.8vw yellow);}
-    to{filter: drop-shadow(0 0 1vw yellow);}
 }
 
 #leftEye, #rightEye {
