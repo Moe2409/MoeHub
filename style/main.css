@@ -26,7 +26,7 @@ button {
     stroke: var(--color);
     stroke-width: 20;
     fill: transparent;
-    filter: drop-shadow(0 0 1vw var(--color));
+    filter: drop-shadow(0 0 4vw var(--color));
 }
 
 #leftEye, #rightEye {
