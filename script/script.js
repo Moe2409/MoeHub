@@ -104,7 +104,12 @@ const eyeStates = {
         {x1: 250, y1: 300, x2: 150, y2: 500}
     ),
     wideEye: new Eye(
-        
+        "M 100 40 Q 10 90 10 200",
+        "M 300 40 Q 390 90 390 200",
+        "M 100 760 Q 10 710 10 600",
+        "M 300 760 Q 390 710 390 600",
+        {x1: 160, y1: 320, x2: 240, y2: 480},
+        {x1: 240, y1: 320, x2: 160, y2: 480}
     )
 };
 
@@ -115,6 +120,7 @@ const mouthStates = {
     bigSmileUpper: new Mouth("M 500 10 Q 750 150 1000 10"),
     bigSmileUnder: new Mouth("M 500 10 Q 750 150 1000 10"),
     frown: new Mouth("M 650 175 Q 750 125 850 175"),
+    smallMouth: new Mouth("M 700 150 Q 750 150 800 150")
 };
 
 function normalAnimation(t, w) {
@@ -157,12 +163,20 @@ function smugAnimation(t, w) {
     mouthStates.bigSmileUnder.animation("#underLip", t, w)
 };
 
+function stunnedAnimation(t, w) {
+    eyeStates.wideEye.animation("#leftEye", t, w)
+    eyeStates.wideEye.animation("#rightEye", t, w)
+    mouthStates.smallMouth.animation("#upperLip", t, w)
+    mouthStates.smallMouth.animation("#underLip", t, w)
+}
+
 const emotions = [
     smugAnimation,
     angryAnimation,
     closeAnimation,
     disgustAnimation,
-    normalAnimation
+    normalAnimation,
+    stunnedAnimation
 ];
 
 var currentState = normalAnimation
