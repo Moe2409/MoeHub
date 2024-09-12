@@ -49,3 +49,8 @@ button {
     top: calc(var(--width)*10/15);
 }
 
+#mousePosition {
+    font-size: 24px;
+    color: white;
+    position: relative;
+}

@@ -102,6 +102,9 @@ const eyeStates = {
         "M 200 500 Q 300 500 350 500",
         {x1: 150, y1: 300, x2: 250, y2: 500},
         {x1: 250, y1: 300, x2: 150, y2: 500}
+    ),
+    wideEye: new Eye(
+        
     )
 };
 
@@ -174,3 +177,15 @@ function startAnimation() {
     x += 1
 };
 
+const mousePositionDiv = document.getElementById('mousePosition');
+const leftEye = document.getElementById('leftEye');
+const rightEye = document.getElementById('rightEye');
+
+document.addEventListener('mousemove', (event) => {
+    const x = event.clientX;
+    const y = event.clientY;
+
+    mousePositionDiv.textContent = `Mouse Position: X: ${x}, Y: ${y}`;
+
+
+});
