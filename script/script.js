@@ -191,16 +191,4 @@ function startAnimation() {
     x += 1
 };
 
-const mousePositionDiv = document.getElementById("mousePosition");
-const leftEye = document.getElementById("leftEye");
-const rightEye = document.getElementById("rightEye");
 
-document.addEventListener("mousemove", (event) => {
-    const x = event.clientX - 340;
-    const y = event.clientY - 340;
-
-    mousePositionDiv.textContent = `Mouse Position: X: ${x}, Y: ${y}`;
-
-    let currentLeftEye = parseInt(window.getComputedStyle(leftEye).left);
-    leftEye.style.left = Math.min(currentLeftEye + x/50, 35/2);
-});
