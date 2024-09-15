@@ -191,5 +191,39 @@ function startAnimation() {
     x += 1
 };
 
+const leftEye = document.getElementById("leftEye");
+const rightEye = document.getElementById("rightEye");
 
+document.addEventListener("mousemove", (event) => {
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    const mouseXInVw = (mouseX / viewportWidth) * 100;
+    const mouseYInVh = (mouseY / viewportHeight) * 100;
+
+    const directionLeft = [mouseXInVw - 10, mouseYInVh - 35];
+    const distanceLeft =  Math.sqrt(directionLeft[0]**2 + directionLeft[1]**2);
+
+    const directionRight = [mouseXInVw - 26.3, mouseYInVh - 35];
+    const distanceRight =  Math.sqrt(directionRight[0]**2 + directionRight[1]**2);
+
+    if (distanceLeft > 5) {
+        leftEye.style.left = `${(10 + (directionLeft[0] / distanceLeft) * 5)/2}vw`;
+        leftEye.style.top = `${(35 + (directionLeft[1] / distanceLeft) * 5)/3.5}vh`;
+    } else {
+        leftEye.style.left =`${mouseXInVw/2}vw`;
+        leftEye.style.top = `${mouseYInVh/3.5}vh`;
+    }
+
+    if (distanceRight > 5) {
+        rightEye.style.right = `${(26.3 + (directionRight[0] / distanceRight) * 5)/2}vw`;
+        rightEye.style.top = `${(35 + (directionRight[1] / distanceRight) * 5)/3.5}vh`;
+    } else {
+        rightEye.style.right =`${mouseXInVw/2}vw`;
+        rightEye.style.top = `${mouseYInVh/3.5}vh`;
+    }
+});
 
