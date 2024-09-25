@@ -47,10 +47,5 @@ button {
     width: var(--width);
     height: calc(var(--width)*5/15);
     top: calc(var(--width)*10/15);
-}
-
-#mousePosition {
-    font-size: 24px;
-    color: white;
-    position: relative;
+    stroke-width: 15;
 }
