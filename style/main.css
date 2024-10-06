@@ -20,7 +20,6 @@ button {
     height: var(--width);
     background-color: var(--backgroundColor);
     position: absolute;
-    filter: drop-shadow(0 0 3vw var(--color));
 }
 
 #leftEye, #rightEye, #chin {
