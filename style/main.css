@@ -50,3 +50,8 @@ button {
     top: calc(var(--width)*10/15);
     stroke-width: 15;
 }
+.box {
+    width: 90vw;
+    height: 35vh;
+    border: 0.1vh solid yellow;
+}
