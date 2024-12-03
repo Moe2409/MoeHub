@@ -20,6 +20,7 @@ button {
     height: var(--width);
     background-color: var(--backgroundColor);
     position: absolute;
+    top: 0;
 }
 
 #leftEye, #rightEye, #chin {
@@ -27,7 +28,7 @@ button {
     stroke: var(--color);
     stroke-width: 20;
     fill: transparent;
-    filter: drop-shadow(0 0 4vw var(--color));
+    filter: drop-shadow(0 0 3vh var(--color));
 }
 
 #leftEye, #rightEye {
@@ -37,11 +38,11 @@ button {
 }
 
 #leftEye {
-    left: calc(var(--width)*2/15 + 0.5vw/2);
+    left: calc(var(--width)*2/15 + 0.5vh/2);
 }
 
 #rightEye {
-    right: calc(var(--width)*2/15 + 0.5vw/2);
+    right: calc(var(--width)*2/15 + 0.5vh/2);
 }
 
 #chin {
@@ -50,8 +51,21 @@ button {
     top: calc(var(--width)*10/15);
     stroke-width: 15;
 }
-.box {
+#sucroseText {
     width: 90vw;
     height: 35vh;
     border: 0.1vh solid yellow;
+    position: absolute;
+}
+
+#sucroseText p {
+    width: calc(90vw - 35vh);
+    height: calc(var(--width)*11/15);
+    position: absolute;
+    left: 35vh;
+    top: calc(var(--width)*2/15);
+    margin: 0;
+    font-size: 1.6rem;
+    font-family: sans-serif;
+    /*text-shadow: 0 0 15px yellow;*/
 }
