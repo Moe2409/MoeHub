@@ -8,6 +8,8 @@ body {
     background-color: var(--backgroundColor);
     color: yellow;
     font-family: sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
 button {
@@ -51,21 +53,75 @@ button {
     top: calc(var(--width)*10/15);
     stroke-width: 15;
 }
-#sucroseText {
-    width: 90vw;
-    height: 35vh;
-    border: 0.1vh solid yellow;
-    position: absolute;
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
 }
 
-#sucroseText p {
-    width: calc(90vw - 35vh);
-    height: calc(var(--width)*11/15);
-    position: absolute;
-    left: 35vh;
-    top: calc(var(--width)*2/15);
-    margin: 0;
-    font-size: 1.6rem;
-    font-family: sans-serif;
-    /*text-shadow: 0 0 15px yellow;*/
+main section {
+    flex: 50%;
+}
+
+#user-in-out {
+    background-color: red;
+}
+
+#user-output {
+    background-color: rgb(134, 2, 134);
+    height: 60%;
+}
+
+#user-input {
+    background-color: purple;
+    height: 15%;
+}
+
+#sucrose {
+    background-color: yellow;
+    color: black;
+}
+
+#sucrose-output {
+    background-color: blue;
+}
+
+#menu {
+    background-color: orange;
+}
+
+#menu span {
+    display: none;
+}
+
+@media screen and (max-width: 1000px) {
+    main {
+        
+    }
+    main section {
+        flex: 100%;
+    }
+    #user-in-out {
+        order: 2;
+        height: 40vh;
+    } 
+    #sucrose {
+        height: 15vh;
+    }
+    #sucrose-output {
+        height: 35vh;
+    }
+    #menu {
+        height: 10vh;
+        order: -1;
+    }
+    #menu span {
+        display: block;
+        font-size: 5rem;
+        margin: 0 1rem;
+    }
+    #menu nav {
+        display: none;
+    }
 }
