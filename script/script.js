@@ -179,7 +179,7 @@ const emotions = [
     stunnedAnimation
 ];
 
-var currentState = normalAnimation
+var currentState = normalAnimation;
 
 let x = 0
 function startAnimation() {
@@ -191,3 +191,5 @@ function startAnimation() {
     x += 1
 };
 
+var test = "lmao";
+console.log(test);

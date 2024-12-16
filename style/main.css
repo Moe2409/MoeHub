@@ -87,39 +87,86 @@ main section {
     background-color: blue;
 }
 
+#menu nav {
+    display: block;
+    background-color: black;
+    height: 90vh;
+    width: 100vw;
+    position: absolute;
+    transition: 1s;
+}
+
 #menu {
     background-color: orange;
 }
 
-#menu span {
+#menu-icon {
     display: none;
 }
 
+#menu-icon:checked ~ nav {
+    display: block;
+}
+
+#menu-icon:checked + label .menu-icon-block {
+    position: absolute;
+    top: 50%;
+    transform-origin: center;
+}
+
+#menu-icon:checked + label #menu-icon-block1 {
+    transform: rotate(45deg);
+}
+
+#menu-icon:checked + label #menu-icon-block2 {
+    transform: rotate(45deg);
+}
+
+#menu-icon:checked + label #menu-icon-block3 {
+    transform: rotate(-45deg);
+}
+
+#menu-icon-container {
+    display: none;
+    cursor: pointer;
+    height: 4.5vh;
+    width: 5vh;
+    margin: 2.5vh 3vh;
+    position: relative;
+    top: 0;
+}
+
+.menu-icon-block {
+    width: 100%;
+    height: 0.4rem;
+    background-color: var(--color);
+    border-radius: 0.2rem;
+    transition: 0.5s ease;
+    position: relative;
+}
+
 @media screen and (max-width: 1000px) {
-    main {
-        
-    }
     main section {
         flex: 100%;
     }
     #user-in-out {
         order: 2;
-        height: 40vh;
+        height: 40%;
     } 
     #sucrose {
-        height: 15vh;
+        height: 15%;
     }
     #sucrose-output {
-        height: 35vh;
+        height: 35%;
     }
     #menu {
-        height: 10vh;
+        height: 10%;
         order: -1;
     }
-    #menu span {
-        display: block;
-        font-size: 5rem;
-        margin: 0 1rem;
+    #menu-icon-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     #menu nav {
         display: none;
