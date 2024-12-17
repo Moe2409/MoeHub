@@ -23,16 +23,29 @@
             sucrose-output
         </section>
         <section id="menu">
-            <input id="menu-icon" type="checkbox">
+            <input id="menu-icon" type="checkbox" onclick="menu_pressed()">
             <label for="menu-icon" id="menu-icon-container">
                 <div id="menu-icon-block1" class="menu-icon-block"></div>
                 <div id="menu-icon-block2" class="menu-icon-block"></div>
                 <div id="menu-icon-block3" class="menu-icon-block"></div>
             </label>
             <nav>
-                menu
+                <svg id="navbar" viewBox="0 0 200 200" preserveAspectRatio="none">
+                    <!-- future
+                    <defs>
+                        <pattern id="image" x="0" y="0" patternUnits="userSpaceOnUse" height="100" width="100">
+                             Scale the image to fit the pattern 
+                            <image x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" xlink:href="https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg"></image>
+                        </pattern>
+                    </defs>
+                    -->
+                    <circle r="99" cx="100" cy="100" fill="url(#image)" />
+                </svg>
+                
             </nav>
         </section>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="script/script.js"></script>
 </body>
 </html>
