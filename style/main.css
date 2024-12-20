@@ -106,8 +106,8 @@ main section {
     align-items: center; 
     stroke-width: 2;
     stroke: var(--color);
-    width: 40vh;
-    height: 40vh;
+    width: min(70vw, 70vh);
+    height: min(70vw, 70vh);
     margin: auto;
     top: 15%;
     position: relative;
@@ -175,9 +175,7 @@ main section {
         order: -1;
     }
     #menu-icon-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        display: block;
     }
     #menu nav {
         display: none;

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Spinning Wheel</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .wheel-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+        .wheel {
+            width: 100%;
+            height: 100%;
+            border: 10px solid #333;
+            border-radius: 50%;
+            background: conic-gradient(#ff0000, #00ff00, #0000ff, #ff0000);
+            transform: rotate(0deg);
+        }
+        .pointer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 50px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="wheel-container">
+        <div class="wheel"></div>
+        <div class="pointer"></div>
+    </div>
+
+    <script>
+        const wheel = document.querySelector('.wheel');
+        let isDragging = false;
+        let startAngle = 0;
+        let currentAngle = 0;
+        let lastTime = 0;
+        let lastAngle = 0;
+        let angularVelocity = 0; // Speed of rotation
+        let friction = 0.98; // Deceleration factor
+
+        function getAngleFromEvent(event) {
+            const rect = wheel.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const x = event.touches ? event.touches[0].clientX : event.clientX;
+            const y = event.touches ? event.touches[0].clientY : event.clientY;
+            return Math.atan2(y - centerY, x - centerX) * (180 / Math.PI);
+        }
+
+        function updateSpeed(newAngle) {
+            const now = performance.now();
+            const deltaTime = now - lastTime;
+            if (deltaTime > 0) {
+                angularVelocity = (newAngle - lastAngle) / (deltaTime / 1000); // Speed in degrees per second
+            }
+            lastTime = now;
+            lastAngle = newAngle;
+        }
+
+        function continueSpin() {
+            if (!isDragging) {
+                angularVelocity *= friction; // Apply deceleration
+                currentAngle += angularVelocity / 60; // Adjust for frame rate
+                wheel.style.transform = `rotate(${currentAngle}deg)`;
+                if (Math.abs(angularVelocity) > 0.1) { // Threshold to stop
+                    requestAnimationFrame(continueSpin);
+                }
+            }
+        }
+
+        wheel.addEventListener('mousedown', (event) => {
+            isDragging = true;
+            startAngle = getAngleFromEvent(event) - currentAngle;
+            lastAngle = getAngleFromEvent(event);
+            lastTime = performance.now();
+            angularVelocity = 0; // Reset velocity
+        });
+
+        wheel.addEventListener('touchstart', (event) => {
+            isDragging = true;
+            startAngle = getAngleFromEvent(event) - currentAngle;
+            lastAngle = getAngleFromEvent(event);
+            lastTime = performance.now();
+            angularVelocity = 0; // Reset velocity
+        });
+
+        window.addEventListener('mousemove', (event) => {
+            if (!isDragging) return;
+            const angle = getAngleFromEvent(event);
+            updateSpeed(angle);
+            currentAngle = angle - startAngle;
+            wheel.style.transform = `rotate(${currentAngle}deg)`;
+        });
+
+        window.addEventListener('touchmove', (event) => {
+            if (!isDragging) return;
+            const angle = getAngleFromEvent(event);
+            updateSpeed(angle);
+            currentAngle = angle - startAngle;
+            wheel.style.transform = `rotate(${currentAngle}deg)`;
+        });
+
+        window.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                continueSpin(); // Start spin continuation
+            }
+        });
+
+        window.addEventListener('touchend', () => {
+            if (isDragging) {
+                isDragging = false;
+                continueSpin(); // Start spin continuation
+            }
+        });
+    </script>
+</body>
+</html>
