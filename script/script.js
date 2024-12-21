@@ -43,3 +43,6 @@ gsap.to("#navbar", {
     ease: "none"
 });
 
+function fuck(s) {
+    console.log(s)
+}
