@@ -21,7 +21,7 @@ function menu_pressed() {
         gsap.to("#menu-icon-block1", {
             duration: 0.3,
             rotation: 0,
-            top: "0"
+            top: "0",
         });
         gsap.to("#menu-icon-block2", {
             duration: 0.3,
@@ -35,3 +35,11 @@ function menu_pressed() {
         });
     };
 };
+
+gsap.to("#navbar", {
+    duration: 60,
+    rotation: -360,
+    repeat: -1,
+    ease: "none"
+});
+
