@@ -1,4 +1,183 @@
-function menu_pressed() {
+const svgNS ="http://www.w3.org/2000/svg";
+
+class SvgContainer {
+    constructor(id) {
+        this.svg = document.getElementById(id);
+
+        if (!this.svg) {
+            throw new Error(`Element with id "${id}" not found.`);
+        }
+    }
+
+    getDimensions() {
+        const viewBox = this.svg.getAttribute("viewBox").split(" ").map(Number);
+
+        return {
+            width: viewBox[2],
+            height: viewBox[3]
+        };
+    }
+
+    getCenter() {
+        const { width, height } = this.getDimensions();
+        return [width / 2, height / 2];
+    }
+}
+
+class Button {
+    constructor(name) {
+        this.name = name;
+        this.subButtons = [];
+    }
+};
+
+class MainNavigationButton extends Button {
+    constructor(name, subButtons) {
+        super(name, subButtons)
+        this.x ;
+        this.y;
+    }
+}
+
+class MainNavigationButtonPosition {
+    static calculatePosition(index, center, radius, totalButtons) {
+        const angle = (2 * Math.PI) / totalButtons;
+        const nextAngle = index*angle - Math.PI/2;
+        const x = center[0] + radius*Math.cos(nextAngle);
+        const y = center[1] + radius*Math.sin(nextAngle);
+        
+        return [Number(x.toFixed(2)), Number(y.toFixed(2))];
+    }
+};
+
+class MainNavigationButtonRender {
+    static render(svg, circleXY, radius) {
+        const circle = document.createElementNS(svgNS, "circle");
+
+        circle.setAttribute('cx', circleXY[0]);
+        circle.setAttribute('cy', circleXY[1]);        
+        circle.setAttribute('r', radius);
+    
+        svg.appendChild(circle);
+    }
+};
+
+class MainLine {
+    constructor() {
+        this.x;
+        this.y;
+    }
+}
+
+class MainLinePosition {
+    static calculatePosition(d, center, circleXY) {
+        const directionVector = [center[0] - circleXY[0], center[1] - circleXY[1]];
+        const length = Math.sqrt(directionVector[0]**2 + directionVector[1]**2);
+        const constant = d/length;
+        const actualVector = [constant*directionVector[0], constant*directionVector[1]];
+        const x = circleXY[0] + actualVector[0];
+        const y = circleXY[1] + actualVector[1];
+
+        return [Number(x.toFixed(2)), Number(y.toFixed(2))];
+    }
+}
+
+class MainLineRender {
+    static render(svg, lineXY) {
+        const line = document.createElementNS(svgNS, "line");
+
+        line.setAttribute('x1', lineXY[0]);
+        line.setAttribute('y1', lineXY[1]);
+        line.setAttribute('x2', lineXY[0]);
+        line.setAttribute('y2', lineXY[1]);        
+    
+        svg.appendChild(line);
+    }
+}
+
+const mainNavigation = new SvgContainer("navbar");
+const mainNavigationButtons = {
+    settings: new MainNavigationButton("settings"),
+    bots: new MainNavigationButton("bots"),
+    cams: new MainNavigationButton("cams"),
+    noe1: new MainNavigationButton("noe1"),
+    noe2: new MainNavigationButton("noe2")
+};
+const mainLines = [];
+
+mainNavigationButtons.settings.subButtons = [new MainNavigationButton("changeBackground")];
+
+const mainNavigationButtonsKeys = Object.keys(mainNavigationButtons);
+
+mainNavigationButtonsKeys.forEach((key, index) => {
+    const buttonRadius = 18;
+    const navbarRadius = 100;
+    const button = mainNavigationButtons[key];
+    const buttonPosition = MainNavigationButtonPosition.calculatePosition(
+        index, 
+        mainNavigation.getCenter(),
+        navbarRadius,
+        mainNavigationButtonsKeys.length
+    );
+    const linePosition = MainLinePosition.calculatePosition(
+        buttonRadius,
+        mainNavigation.getCenter(),
+        buttonPosition
+    );
+
+    button.x = buttonPosition[0];
+    button.y = buttonPosition[1];
+
+    console.log("Button :", button.x, button.y);
+    MainNavigationButtonRender.render(
+        mainNavigation.svg,
+        buttonPosition,
+        buttonRadius
+    );
+
+    mainLines.push(linePosition);
+});
+
+mainLines.forEach((line) => {
+    MainLineRender.render(
+        mainNavigation.svg,
+        mainLines[0]
+    );
+});
+
+const lines = document.querySelectorAll('line');
+
+let i = 0;
+function lineAnimation() {
+    if (i >= lines.length) {
+        i = 0;
+    };
+
+    lines.forEach((line) => {
+        line.setAttribute('x1', mainLines[i][0]);
+        line.setAttribute('y1', mainLines[i][1]);
+        line.setAttribute('x2', mainLines[i][0]);
+        line.setAttribute('y2', mainLines[i][1]);
+    }); 
+
+    for (let j = 0; j < lines.length; j++) {
+        gsap.to(lines[j], {
+            duration: 1,
+            attr: {x2:mainLines[j][0], y2:mainLines[j][1]}
+        });
+        gsap.to(lines[j], {
+            duration: 1,
+            attr: {x1:mainLines[j][0], y1:mainLines[j][1]},
+            delay: 1
+        });
+    }
+    i++;
+};
+
+setInterval(lineAnimation, 2500);
+
+
+function menuPressed() {
     var checkbox = document.getElementById('menu-icon');
 
     if (checkbox.checked) {
@@ -42,84 +221,3 @@ gsap.to("#navbar", {
     repeat: -1,
     ease: "none"
 });
-
-const svg = document.getElementById('navbar');
-const circles = Array.from(svg.querySelectorAll('circle')).slice(1)
-const circlesXY = [];
-const lines = Array.from(svg.querySelectorAll('line'));
-const lengde = 100;
-const origo = 119;
-const radius = 100;
-const vinkel = (2*Math.PI)/circles.length;
-const navbar = document.getElementById("navbar")
-
-const k = 0.18;
-const retningsVektor = [];
-const faktiskVektor = [];
-const circleTopPoint = [];
-
-var i = 0;
-circles.forEach((circle) => {
-    const nyVinkel = i*vinkel - Math.PI/2;
-    const x = origo + radius*Math.cos(nyVinkel);
-    const y = origo + radius*Math.sin(nyVinkel);
-
-    retningsVektor[i] = [origo - x, origo - y];
-    faktiskVektor[i] = [k*retningsVektor[i][0], k*retningsVektor[i][1]];
-    circlesXY[i] = [x, y];
-    circleTopPoint[i] = [circlesXY[i][0] + faktiskVektor[i][0], circlesXY[i][1] + faktiskVektor[i][1]];
-
-    
-    circle.setAttribute('cx', x);
-    circle.setAttribute('cy', y);        
-    circle.setAttribute('r', 18); 
-
-    console.log(i + '\n' + "x : " + x + '\n' + "y : " + y);
-    i++;
-});
-
-
-i = 0;
-function lineAnimation() {
-    if (i >= lines.length) {
-        i = 0;
-    };
-
-    lines.forEach((line) => {
-        line.setAttribute('x1', circleTopPoint[i][0]);
-        line.setAttribute('y1', circleTopPoint[i][1]);
-        line.setAttribute('x2', circleTopPoint[i][0]);
-        line.setAttribute('y2', circleTopPoint[i][1]);
-    }); 
-
-    for (let j = 0; j < lines.length; j++) {
-        gsap.to(lines[j], {
-            duration: 1,
-            attr: {x2:circleTopPoint[j][0], y2:circleTopPoint[j][1]}
-        });
-        gsap.to(lines[j], {
-            duration: 1,
-            attr: {x1:circleTopPoint[j][0], y1:circleTopPoint[j][1]},
-            delay: 1
-        });
-    }
-
-    i++;
-
-    /*
-    const line = lines[i];
-
-    line.setAttribute('x1', circleTopPoint[0][0]);
-    line.setAttribute('y1', circleTopPoint[0][1]);
-    line.setAttribute('x2', circleTopPoint.at(i+1)[0]);
-    line.setAttribute('y2', circleTopPoint.at(i+1)[1]);
-    i++;
-    */
-};
-
-setInterval(lineAnimation, 2500);
-
-
-function fuck(s) {
-    console.log(s)
-}
