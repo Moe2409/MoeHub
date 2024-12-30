@@ -225,5 +225,7 @@ gsap.to("#navbar", {
     ease: "none"
 });
 
+/*
 let test = document.getElementById("settings");
 test.remove();
+*/
