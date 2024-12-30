@@ -156,6 +156,10 @@ main section {
     top: 85%;
 }
 
+.main-navigation-button:hover {
+    fill: var(--color);
+    cursor: pointer;
+}
 
 @media screen and (max-width: 1000px) {
     main section {

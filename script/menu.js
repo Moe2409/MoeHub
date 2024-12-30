@@ -51,9 +51,11 @@ class MainNavigationButtonPosition {
 };
 
 class MainNavigationButtonRender {
-    static render(svg, circleXY, radius) {
+    static render(id, svg, circleXY, radius) {
         const circle = document.createElementNS(svgNS, "circle");
 
+        circle.setAttribute('id', id);
+        circle.setAttribute('class', "main-navigation-button")
         circle.setAttribute('cx', circleXY[0]);
         circle.setAttribute('cy', circleXY[1]);        
         circle.setAttribute('r', radius);
@@ -130,6 +132,7 @@ mainNavigationButtonsKeys.forEach((key, index) => {
 
     console.log("Button :", button.x, button.y);
     MainNavigationButtonRender.render(
+        button.name,
         mainNavigation.svg,
         buttonPosition,
         buttonRadius
@@ -221,3 +224,6 @@ gsap.to("#navbar", {
     repeat: -1,
     ease: "none"
 });
+
+let test = document.getElementById("settings");
+test.remove();
