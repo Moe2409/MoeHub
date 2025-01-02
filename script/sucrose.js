@@ -116,7 +116,7 @@ const eyeStates = {
 const mouthStates = {
     normal: new Mouth("M 700 150 Q 750 150 800 150"),
     straight: new Mouth("M 650 150 Q 750 150 850 150"),
-    smile: new Mouth("M 650 125 Q 750 175 850 125"),
+    smile: new Mouth("M 650 125 Q 750 175 850 125"),/*M 650 125 Q 750 175 850 125*/ 
     bigSmileUpper: new Mouth("M 500 10 Q 750 150 1000 10"),
     bigSmileUnder: new Mouth("M 500 10 Q 750 150 1000 10"),
     frown: new Mouth("M 650 175 Q 750 125 850 175"),
@@ -191,5 +191,46 @@ function startAnimation() {
     x += 1
 };
 
-var test = "lmao";
-console.log(test);
+const cube = document.getElementById("cube");
+
+for (let i = 0; i <= 15; i++) {
+    let div = document.createElement("div");
+    div.className = "horisontal-line"; 
+    div.style.top = `${i*100/15}%`;
+    cube.appendChild(div);
+
+    console.log(div);
+
+    div = document.createElement("div");
+    div.className = "vertical-line"; 
+    div.style.left = `${i*100/15}%`;
+    cube.appendChild(div);
+};
+
+let showGridActive = false;
+function showGrid() {
+    const horisontal_lines = document.querySelectorAll('.horisontal-line');
+    const vertical_lines = document.querySelectorAll('.vertical-line');
+
+    if (showGridActive) {
+        horisontal_lines.forEach(horisontal_line => {
+            horisontal_line.style.display = 'none';
+        });
+    
+        vertical_lines.forEach(vertical_line => {
+            vertical_line.style.display = 'none';
+        });
+
+        showGridActive = false;
+    } else {
+        horisontal_lines.forEach(horisontal_line => {
+            horisontal_line.style.display = 'block';
+        });
+    
+        vertical_lines.forEach(vertical_line => {
+            vertical_line.style.display = 'block';
+        });
+
+        showGridActive = true;
+    };
+};
