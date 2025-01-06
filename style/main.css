@@ -33,7 +33,7 @@ button {
 #leftEye, #rightEye, #chin {
     position: absolute;
     stroke: var(--color);
-    stroke-width: 20;
+    stroke-width: 6; /*20*/
     fill: transparent;
     filter: drop-shadow(0 0 3vh var(--color));
 }
@@ -45,18 +45,18 @@ button {
 }
 
 #leftEye {
-    left: calc(var(--width)*2/15 + 0.5vh/2);
+    left: calc(var(--width)*2/15);
 }
 
 #rightEye {
-    right: calc(var(--width)*2/15 + 0.5vh/2);
+    right: calc(var(--width)*2/15);
 }
 
 #chin {
     width: var(--width);
     height: calc(var(--width)*5/15);
     top: calc(var(--width)*10/15);
-    stroke-width: 15;
+    stroke-width: 2;
 }
 
 main {

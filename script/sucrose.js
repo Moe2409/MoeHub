@@ -7,6 +7,7 @@ class Eye {
         this.leftX = leftX
         this.rightX = rightX
     }
+
     animation(eyeSelector, t, w) {
         gsap.to(`${eyeSelector} .topLeftC`, {
             duration: t,
@@ -45,6 +46,7 @@ class Mouth {
     constructor(lips) {
         this.lips = lips
     }
+    
     animation(lipSelector, t, w) {
         gsap.to(`${lipSelector}`, {
             duration: t,
