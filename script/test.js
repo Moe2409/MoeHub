@@ -41,3 +41,47 @@ for (i = 0; i < 4; i++) {
 points.forEach((point) => {
     console.log(point);
 });  */
+
+const cube = document.getElementById("cube");
+
+for (let i = 0; i <= 15; i++) {
+    let div = document.createElement("div");
+    div.className = "horisontal-line"; 
+    div.style.top = `${i*100/15}%`;
+    cube.appendChild(div);
+
+    console.log(div);
+
+    div = document.createElement("div");
+    div.className = "vertical-line"; 
+    div.style.left = `${i*100/15}%`;
+    cube.appendChild(div);
+};
+
+let showGridActive = false;
+function showGrid() {
+    const horisontal_lines = document.querySelectorAll('.horisontal-line');
+    const vertical_lines = document.querySelectorAll('.vertical-line');
+
+    if (showGridActive) {
+        horisontal_lines.forEach(horisontal_line => {
+            horisontal_line.style.display = 'none';
+        });
+    
+        vertical_lines.forEach(vertical_line => {
+            vertical_line.style.display = 'none';
+        });
+
+        showGridActive = false;
+    } else {
+        horisontal_lines.forEach(horisontal_line => {
+            horisontal_line.style.display = 'block';
+        });
+    
+        vertical_lines.forEach(vertical_line => {
+            vertical_line.style.display = 'block';
+        });
+
+        showGridActive = true;
+    };
+};

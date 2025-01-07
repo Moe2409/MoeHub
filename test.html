@@ -4,35 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    #cube {
+        width: 100vw;
+        height: 100vw;
+        position: relative;
+        top: 0;
+    }
+    .horisontal-line, .vertical-line {
+    position: absolute;
+    background-color: red;
+    display: none;
+}
+
+.horisontal-line {
+    width: 100%;
+    height: 1px;
+}
+
+.vertical-line {
+    top: 0;
+    height: 100%;
+    width: 1px;
+}
+    </style>
 </head>
 <body>
     <button onclick="showGrid()">Grid</button>
-    <svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
-        <!-- Kvart sirkel (avskåret av rektangelet) -->
-        <circle cx="250" cy="250" r="200" />
-        <path fill="none" stroke="blue" stroke-width="2" 
-        d="M 50 250 C 50 180 87.2 113.2 150 76.8"/>
-        <path fill="none" stroke="teal" stroke-width="2" 
-        d="M 50 250 C 50 320 87.2 386.8 150 423.2"/>            
-        <line x1="0" y1="250" x2="500" y2="250" stroke="red" stroke-width="2"/>
-        <line x1="250" y1="0" x2="250" y2="500" stroke="red" stroke-width="2"/>
-        <line x1="150" y1="0" x2="150" y2="500" stroke="red" stroke-width="2"/>
-        <line x1="350" y1="0" x2="350" y2="500" stroke="red" stroke-width="2"/>
-
-        <circle cx="50" cy="250" r="2" fill="green"/>
-        <circle cx="50" cy="180" r="2" fill="green"/>
-        <circle cx="87.2" cy="113.2" r="2" fill="green"/>
-        <circle cx="150" cy="76.8" r="2" fill="green"/>
-
-        <circle cx="50" cy="250" r="2" fill="cyan"/>
-        <circle cx="50" cy="320" r="2" fill="cyan"/>
-        <circle cx="87.2" cy="386.8" r="2" fill="cyan"/>
-        <circle cx="150" cy="423.2" r="2" fill="cyan"/>
-    </svg>
-    <svg viewBox="0 0 450 450" preserveAspectRatio="none" fill="none" stroke-width="2">
+    <div id="cube">
+    <svg viewBox="0 0 450 450" preserveAspectRatio="none" fill="none" stroke-width="4">
         <rect x="0" y="0" width="450" height="450" fill="black" />
-        
-
         <g id="leftEye" stroke="yellow">
             <path class="leftX" d="M 72 84 168 276" />
             <path class="rightX" d="M 168 84 72 276" />
@@ -51,20 +52,12 @@
             <path class="bottomLeftC" d="M 270 240 C 270 261 281.16 281.04 300 291.96" />
             <path class="bottomRightC" d="M 390 240 C 390 261 378.84 281.04 360 291.96" />
         </g>
-        <g id="mouth">
-            <path id="upperLip" d="M 700 150 Q 750 150 800 150" />
+        <g id="mouth" stroke="yellow">
+            <path id="upperLip" d="M 210 360 240 360 " />
             <path id="underLip" d="M 700 150 Q 750 150 800 150" />
         </g>
-        <circle class="point" cx="72" cy="84" r="2" fill="green" />
-        <circle class="point" cx="168" cy="276" r="2" fill="green" />
-        <circle class="point" cx="168" cy="84" r="2" fill="green" />
-        <circle class="point" cx="72" cy="276" r="2" fill="green" />
-
-        <circle class="point" cx="282" cy="84" r="2" fill="green" />
-        <circle class="point" cx="378" cy="276" r="2" fill="green" />
-        <circle class="point" cx="378" cy="84" r="2" fill="green" />
-        <circle class="point" cx="282" cy="276" r="2" fill="green" />
     </svg>
+</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script src="script/test.js"></script>
 </body>
