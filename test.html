@@ -6,8 +6,8 @@
     <title>Document</title>
     <style>
     #cube {
-        width: 100vw;
-        height: 100vw;
+        width: 50vw;
+        height: 50vw;
         position: relative;
         top: 0;
     }
@@ -30,9 +30,11 @@
     </style>
 </head>
 <body>
+    <button onclick="startAnimation()">Change</button>
+    <button onclick="blinkAnimation()">Blink</button>
     <button onclick="showGrid()">Grid</button>
     <div id="cube">
-    <svg viewBox="0 0 450 450" preserveAspectRatio="none" fill="none" stroke-width="4">
+    <svg viewBox="0 0 450 450" preserveAspectRatio="none" fill="none" stroke-width="3">
         <rect x="0" y="0" width="450" height="450" fill="black" />
         <g id="leftEye" stroke="yellow">
             <path class="leftX" d="M 72 84 168 276" />
@@ -52,8 +54,8 @@
             <path class="bottomLeftC" d="M 270 240 C 270 261 281.16 281.04 300 291.96" />
             <path class="bottomRightC" d="M 390 240 C 390 261 378.84 281.04 360 291.96" />
         </g>
-        <g id="mouth" stroke="yellow">
-            <path id="upperLip" d="M 210 360 240 360 " />
+        <g id="mouth" stroke="yellow" stroke-width="2">
+            <path id="upperLip" d="M 210 330 C 210 350 240 350 240 330" />
             <path id="underLip" d="M 700 150 Q 750 150 800 150" />
         </g>
     </svg>
