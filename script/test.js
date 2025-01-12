@@ -98,12 +98,12 @@ const leftEye = {
         "M 134 152 105 210"
     ),
     wideEye: new Eye(
-        "M 100 40 Q 10 90 10 200",
-        "M 300 40 Q 390 90 390 200",
-        "M 100 760 Q 10 710 10 600",
-        "M 300 760 Q 390 710 390 600",
-        {x1: 160, y1: 320, x2: 240, y2: 480},
-        {x1: 240, y1: 320, x2: 160, y2: 480}
+        "M 60 120 C 60 99 71.16 78.96 90 68.04",
+        "M 180 120 C 180 99 168.84 78.96 150 68.04",
+        "M 60 240 C 60 261 71.16 281.04 90 291.96",
+        "M 180 240 C 180 261 168.84 281.04 150 291.96",
+        "M 110 160 130 200", 
+        "M 130 160 110 200"
     )
 };
 
@@ -145,8 +145,16 @@ const rightEye = {
         "M 390 195 C 381 171 360 150 330 150",
         "M 285 210 C 300 210 315 210 330 210",
         "M 375 210 C 360 210 345 210 330 210",
-        "M 316 152 345 210",/*34 152*/ 
-        "M 344 152 315 210"/*66*/
+        "M 316 152 345 210",
+        "M 344 152 315 210"
+    ),
+    wideEye: new Eye(
+        "M 270 120 C 270 99 281.16 78.96 300 68.04",
+        "M 390 120 C 390 99 378.84 78.96 360 68.04",
+        "M 270 240 C 270 261 281.16 281.04 300 291.96",
+        "M 390 240 C 390 261 378.84 281.04 360 291.96",
+        "M 320 160 340 200", 
+        "M 340 160 320 200"
     )
 };
 
@@ -190,12 +198,18 @@ function smugAnimation(t, w) {
     rightEye.smug.animation("#rightEye", t, w)
 };
 
+function stunnedAnimation(t, w) {
+    leftEye.wideEye.animation("#leftEye", t, w)
+    rightEye.wideEye.animation("#rightEye", t, w)
+}
+
 const emotions = [
     closeAnimation,
     disgustAnimation,
     normalAnimation,
     angryAnimation,
-    smugAnimation
+    smugAnimation,
+    stunnedAnimation
 ];
 
 var currentState = normalAnimation;
