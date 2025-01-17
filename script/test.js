@@ -160,47 +160,56 @@ const rightEye = {
 
 const mouthStates = {
     normal: new Mouth("M 700 150 Q 750 150 800 150"),
-    straight: new Mouth("M 650 150 Q 750 150 850 150"),
+    uSmile: new Mouth("M 210 330 C 210 350 240 350 240 330"),
+    straight: new Mouth("M 210 345 C 225 345 225 345 240 345"),
     smile: new Mouth("M 650 125 Q 750 175 850 125"), 
     bigSmileUpper: new Mouth("M 500 10 Q 750 150 1000 10"),
     bigSmileUnder: new Mouth("M 500 10 Q 750 150 1000 10"),
-    frown: new Mouth("M 650 175 Q 750 125 850 175"),
-    smallMouth: new Mouth("M 700 150 Q 750 150 800 150")
+    frown: new Mouth("M 210 345 C 210 325 240 325 240 345"),
+    smallMouth: new Mouth("M 220 345 C 225 345 225 345 230 345")
 };
 
-function normalAnimation(t, w) {
+const normalAnimation = (t, w) => {
     leftEye.normal.animation("#leftEye", t, w)
     rightEye.normal.animation("#rightEye", t, w)
+    mouthStates.uSmile.animation("#upperLip", t ,w)
+    mouthStates.uSmile.animation("#underLip", t, w)
 };
 
-function closeAnimation(t, w) {
+const closeAnimation = (t, w) => {
     leftEye.close.animation("#leftEye", t, w)
     rightEye.close.animation("#rightEye",t, w)
 };
 
-function blinkAnimation() {
+const blinkAnimation = () => {
     closeAnimation(0.15, 0)
     currentState(0.2, 0.25)
 };
 
-function disgustAnimation(t, w) {
+const disgustAnimation = (t, w) => {
     leftEye.disgust.animation("#leftEye", t, w)
     rightEye.disgust.animation("#rightEye", t, w)
+    mouthStates.straight.animation("#upperLip", t, w)
+    mouthStates.straight.animation("#underLip", t, w)
 };
 
-function angryAnimation(t, w) {
+const angryAnimation = (t, w) => {
     leftEye.angry.animation("#leftEye", t, w)
     rightEye.angry.animation("#rightEye", t, w)
+    mouthStates.frown.animation("#upperLip", t, w)
+    mouthStates.frown.animation("#underLip", t, w)
 };
 
-function smugAnimation(t, w) {
+const smugAnimation = (t, w) => {
     leftEye.smug.animation("#leftEye", t, w)
     rightEye.smug.animation("#rightEye", t, w)
 };
 
-function stunnedAnimation(t, w) {
+const stunnedAnimation = (t, w) => {
     leftEye.wideEye.animation("#leftEye", t, w)
     rightEye.wideEye.animation("#rightEye", t, w)
+    mouthStates.smallMouth.animation("#upperLip", t, w)
+    mouthStates.smallMouth.animation("#underLip", t, w)
 }
 
 const emotions = [
