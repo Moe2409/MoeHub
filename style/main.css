@@ -23,11 +23,9 @@ button {
 }
 
 #cube {
-    width: var(--width);
-    height: var(--width);
-    background-color: var(--backgroundColor);
     position: relative;
-    top: 0;
+    background-color: var(--backgroundColor);
+    fill: transparent;
 }
 
 #leftEye, #rightEye, #chin {
@@ -186,11 +184,15 @@ main section {
     #menu nav {
         display: none;
     }
+    #cube {
+        height: 15vh;
+        width: 15vh;
+    }
 }
 
 .horisontal-line, .vertical-line {
     position: absolute;
-    background-color: var(--color);
+    background-color: red;
     display: none;
 }
 
@@ -200,6 +202,7 @@ main section {
 }
 
 .vertical-line {
+    top: 0;
     height: 100%;
     width: 1px;
 }

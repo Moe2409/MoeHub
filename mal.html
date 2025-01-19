@@ -17,7 +17,35 @@
             </div>
         </section>
         <section id="sucrose">
-            sucrose
+            <div id="cube">
+                <svg viewBox="0 0 450 450" preserveAspectRatio="none" fill="none" stroke-width="3">
+                    <g id="leftEye" stroke="yellow">
+                        <path class="leftX" d="M 72 84 168 276" />
+                        <path class="rightX" d="M 168 84 72 276" />
+
+                        <path class="topLeftC" d="M 60 120 C 60 99 71.16 78.96 90 68.04" />
+                        <path class="topRightC" d="M 180 120 C 180 99 168.84 78.96 150 68.04" />
+                        <path class="bottomLeftC" d="M 60 240 C 60 261 71.16 281.04 90 291.96" />
+                        <path class="bottomRightC" d="M 180 240 C 180 261 168.84 281.04 150 291.96" />
+                    </g>
+                    <g id="rightEye" stroke="yellow">
+                        <path class="leftX" d="M 282 84 378 276" />
+                        <path class="rightX" d="M 378 84 282 276"  />
+
+                        <path class="topLeftC" d="M 270 120 C 270 99 281.16 78.96 300 68.04" />
+                        <path class="topRightC" d="M 390 120 C 390 99 378.84 78.96 360 68.04" />
+                        <path class="bottomLeftC" d="M 270 240 C 270 261 281.16 281.04 300 291.96" />
+                        <path class="bottomRightC" d="M 390 240 C 390 261 378.84 281.04 360 291.96" />
+                    </g>
+                    <g id="mouth" stroke="yellow" stroke-width="2">
+                        <path id="upperLip" d="M 210 330 C 210 350 240 350 240 330" />
+                        <path id="underLip" d="M 210 330 C 210 350 240 350 240 330" />
+                    </g>
+                </svg>
+            </div>
+            <button onclick="startAnimation()">Change</button>
+            <button onclick="blinkAnimation()">Blink</button>
+            <button onclick="showGrid()">Grid</button>
         </section>
         <section id="sucrose-output">
             sucrose-output
@@ -41,7 +69,6 @@
                     <circle r="100" cx="100" cy="100" fill="url(#image)" />
                     -->
                     <circle r="100" cx="119" cy="119" />
-
                 </svg>
             </nav>
         </section>
@@ -49,5 +76,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script src="script/script.js"></script>
     <script src="script/menu.js"></script>
+    <script src="script/test.js"></script>
 </body>
 </html>

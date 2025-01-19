@@ -4,7 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=none">
     <title>Sucrose</title>
-    <link rel="stylesheet" href="style/main.css" />
+    <style>
+        :root {
+    --color: yellow;
+    --width: 600px;
+    --backgroundColor: black;
+}
+
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: var(--backgroundColor);
+    color: var(--color);
+    font-family: sans-serif;
+}
+
+button {
+    top: 70vh;
+    position: relative;
+    z-index: 1;
+}
+
+#cube {
+    width: var(--width);
+    height: var(--width);
+    background-color: var(--backgroundColor);
+    position: relative;
+    top: 0;
+}
+
+#leftEye, #rightEye, #chin {
+    position: absolute;
+    stroke: var(--color);
+    stroke-width: 6; /*20*/
+    fill: transparent;
+    filter: drop-shadow(0 0 3vh var(--color));
+}
+
+#leftEye, #rightEye {
+    width: calc(var(--width)*4/15);
+    height: calc(var(--width)*8/15);
+    top: calc(var(--width)*2/15);
+}
+
+#leftEye {
+    left: calc(var(--width)*2/15);
+}
+
+#rightEye {
+    right: calc(var(--width)*2/15);
+}
+
+#chin {
+    width: var(--width);
+    height: calc(var(--width)*5/15);
+    top: calc(var(--width)*10/15);
+    stroke-width: 2;
+}
+
+.horisontal-line, .vertical-line {
+    position: absolute;
+    background-color: var(--color);
+    display: none;
+}
+
+.horisontal-line {
+    width: 100%;
+    height: 1px;
+}
+
+.vertical-line {
+    height: 100%;
+    width: 1px;
+}
+    </style>
 </head>
 <body>
     <button onclick="startAnimation()">Button</button>

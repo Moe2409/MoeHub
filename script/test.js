@@ -162,9 +162,7 @@ const mouthStates = {
     normal: new Mouth("M 700 150 Q 750 150 800 150"),
     uSmile: new Mouth("M 210 330 C 210 350 240 350 240 330"),
     straight: new Mouth("M 210 345 C 225 345 225 345 240 345"),
-    smile: new Mouth("M 650 125 Q 750 175 850 125"), 
-    bigSmileUpper: new Mouth("M 500 10 Q 750 150 1000 10"),
-    bigSmileUnder: new Mouth("M 500 10 Q 750 150 1000 10"),
+    smile: new Mouth("M 150 300 C 195 330 255 330 300 300"), 
     frown: new Mouth("M 210 345 C 210 325 240 325 240 345"),
     smallMouth: new Mouth("M 220 345 C 225 345 225 345 230 345")
 };
@@ -203,6 +201,8 @@ const angryAnimation = (t, w) => {
 const smugAnimation = (t, w) => {
     leftEye.smug.animation("#leftEye", t, w)
     rightEye.smug.animation("#rightEye", t, w)
+    mouthStates.smile.animation("#upperLip", t, w)
+    mouthStates.smile.animation("#underLip", t, w)
 };
 
 const stunnedAnimation = (t, w) => {
