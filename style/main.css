@@ -26,12 +26,13 @@ button {
     position: relative;
     background-color: var(--backgroundColor);
     fill: transparent;
+    margin: 0 10%;
 }
 
 #leftEye, #rightEye, #chin {
     position: absolute;
     stroke: var(--color);
-    stroke-width: 6; /*20*/
+    stroke-width: 6; 
     fill: transparent;
     filter: drop-shadow(0 0 3vh var(--color));
 }

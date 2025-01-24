@@ -104,6 +104,14 @@ const leftEye = {
         "M 180 240 C 180 261 168.84 281.04 150 291.96",
         "M 110 160 130 200", 
         "M 130 160 110 200"
+    ),
+    slyAmusement: new Eye(
+        "M 60 150 C 90 150 105 150 120 150",
+        "M 180 150 C 150 150 135 150 120 150",
+        "M 60 165 C 69 189 90 210 120 210",
+        "M 180 165 C 171 189 150 210 120 210",
+        "M 106 152 135 210",
+        "M 134 152 105 210"
     )
 };
 
@@ -155,6 +163,14 @@ const rightEye = {
         "M 390 240 C 390 261 378.84 281.04 360 291.96",
         "M 320 160 340 200", 
         "M 340 160 320 200"
+    ),
+    slyAmusement: new Eye(
+        "M 270 150 C 300 150 315 150 330 150",
+        "M 390 150 C 360 150 345 150 330 150",
+        "M 270 165 C 279 189 300 210 330 210",/*"M 270 195 C 300 210 315 210 330 210"*/
+        "M 390 165 C 381 189 360 210 330 210",/*"M 390 195 C 360 210 345 210 330 210"*/ 
+        "M 316 152 345 210",
+        "M 344 152 315 210"
     )
 };
 
@@ -212,13 +228,21 @@ const stunnedAnimation = (t, w) => {
     mouthStates.smallMouth.animation("#underLip", t, w)
 }
 
+const slyAmusementAnimation = (t, w) => {
+    leftEye.slyAmusement.animation("#leftEye", t, w)
+    rightEye.slyAmusement.animation("#rightEye", t, w)
+    mouthStates.smile.animation("#upperLip", t, w)
+    mouthStates.smile.animation("#underLip", t, w)
+}
+
 const emotions = [
     closeAnimation,
     disgustAnimation,
-    normalAnimation,
     angryAnimation,
     smugAnimation,
-    stunnedAnimation
+    stunnedAnimation,
+    slyAmusementAnimation,
+    normalAnimation
 ];
 
 var currentState = normalAnimation;
