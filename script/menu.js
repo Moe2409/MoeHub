@@ -1,3 +1,4 @@
+
 const svgNS ="http://www.w3.org/2000/svg";
 
 class SvgContainer {
@@ -54,12 +55,22 @@ class MainNavigationButtonRender {
     static render(id, svg, circleXY, radius) {
         const circle = document.createElementNS(svgNS, "circle");
 
+        /*
         circle.setAttribute('id', id);
         circle.setAttribute('class', "main-navigation-button")
         circle.setAttribute('cx', circleXY[0]);
         circle.setAttribute('cy', circleXY[1]);        
         circle.setAttribute('r', radius);
-    
+        */
+
+        $(circle).attr({
+            id: id,
+            class: "main-navigation-button",
+            cx: circleXY[0],
+            cy: circleXY[1],
+            r: radius
+        });
+
         svg.appendChild(circle);
     }
 };
@@ -88,11 +99,20 @@ class MainLineRender {
     static render(svg, lineXY) {
         const line = document.createElementNS(svgNS, "line");
 
+        /*
         line.setAttribute('x1', lineXY[0]);
         line.setAttribute('y1', lineXY[1]);
         line.setAttribute('x2', lineXY[0]);
         line.setAttribute('y2', lineXY[1]);        
-    
+        */
+
+        $(line).attr({
+            x1: lineXY[0],
+            y1: lineXY[1],
+            x2: lineXY[0],
+            y2: lineXY[1]
+        });
+
         svg.appendChild(line);
     }
 }
@@ -147,7 +167,7 @@ mainLines.forEach((line) => {
     );
 });
 
-const lines = document.querySelectorAll('line');
+const lines = $("line").toArray();
 
 let i = 0;
 function lineAnimation() {
@@ -156,10 +176,18 @@ function lineAnimation() {
     };
 
     lines.forEach((line) => {
+        /*
         line.setAttribute('x1', mainLines[i][0]);
         line.setAttribute('y1', mainLines[i][1]);
         line.setAttribute('x2', mainLines[i][0]);
         line.setAttribute('y2', mainLines[i][1]);
+        */
+        $(line).attr({
+            x1: mainLines[i][0],
+            y1: mainLines[i][1],
+            x2: mainLines[i][0],
+            y2: mainLines[i][1]
+    });
     }); 
 
     for (let j = 0; j < lines.length; j++) {
