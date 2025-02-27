@@ -103,7 +103,6 @@ const mainNavigationButtons = {
     bots: new MainNavigationButton("bots"),
     cams: new MainNavigationButton("cams"),
     noe1: new MainNavigationButton("noe1"),
-    noe2: new MainNavigationButton("noe2")
 };
 const mainLines = [];
 
