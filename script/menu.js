@@ -1,4 +1,3 @@
-
 const svgNS ="http://www.w3.org/2000/svg";
 
 class SvgContainer {
@@ -256,3 +255,10 @@ gsap.to("#navbar", {
 let test = document.getElementById("settings");
 test.remove();
 */
+
+$(document).ready(function () {
+    $(".main-navigation-button").on("click", function() {
+        const name = this.id;
+        console.log(`You clicked: ${name}`)
+    })
+});
