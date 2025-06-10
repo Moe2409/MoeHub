@@ -125,7 +125,9 @@ const mainNavigationButtons = {
 };
 const mainLines = [];
 
-mainNavigationButtons.settings.subButtons = [new MainNavigationButton("changeBackground")];
+mainNavigationButtons.settings.subButtons = [new MainNavigationButton("changeColorTheme")];
+
+// Make render a function
 
 const mainNavigationButtonsKeys = Object.keys(mainNavigationButtons);
 
@@ -258,7 +260,7 @@ test.remove();
 
 $(document).ready(function () {
     $(".main-navigation-button").on("click", function() {
-        const name = this.id;
-        console.log(`You clicked: ${name}`)
+        const key = this.id;
+        console.log(`You clicked: ${mainNavigationButtons[key].subButtons}`)
     })
 });

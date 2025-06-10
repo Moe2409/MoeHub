@@ -29,7 +29,7 @@ button {
     margin: 0 10%;
 }
 
-#leftEye, #rightEye, #chin {
+#leftEye, #rightEye, #mouth {
     position: absolute;
     stroke: var(--color);
     stroke-width: 6; 
@@ -51,11 +51,11 @@ button {
     right: calc(var(--width)*2/15);
 }
 
-#chin {
+#mouth {
     width: var(--width);
     height: calc(var(--width)*5/15);
     top: calc(var(--width)*10/15);
-    stroke-width: 2;
+    stroke-width: 3;
 }
 
 main {

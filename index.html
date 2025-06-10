@@ -2,114 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=none">
-    <title>Sucrose</title>
-    <style>
-        :root {
-    --color: yellow;
-    --width: 600px;
-    --backgroundColor: black;
-}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoeHub</title>
+    <link rel="stylesheet" href="style/main.css" />
+    <link rel="icon" href="pictures/LEON Logo.svg">
 
-html, body {
-    height: 100%;
-    padding: 0;
-    margin: 0;
-}
-
-body {
-    background-color: var(--backgroundColor);
-    color: var(--color);
-    font-family: sans-serif;
-}
-
-button {
-    top: 70vh;
-    position: relative;
-    z-index: 1;
-}
-
-#cube {
-    width: var(--width);
-    height: var(--width);
-    background-color: var(--backgroundColor);
-    position: relative;
-    top: 0;
-}
-
-#leftEye, #rightEye, #chin {
-    position: absolute;
-    stroke: var(--color);
-    stroke-width: 6; /*20*/
-    fill: transparent;
-    filter: drop-shadow(0 0 3vh var(--color));
-}
-
-#leftEye, #rightEye {
-    width: calc(var(--width)*4/15);
-    height: calc(var(--width)*8/15);
-    top: calc(var(--width)*2/15);
-}
-
-#leftEye {
-    left: calc(var(--width)*2/15);
-}
-
-#rightEye {
-    right: calc(var(--width)*2/15);
-}
-
-#chin {
-    width: var(--width);
-    height: calc(var(--width)*5/15);
-    top: calc(var(--width)*10/15);
-    stroke-width: 2;
-}
-
-.horisontal-line, .vertical-line {
-    position: absolute;
-    background-color: var(--color);
-    display: none;
-}
-
-.horisontal-line {
-    width: 100%;
-    height: 1px;
-}
-
-.vertical-line {
-    height: 100%;
-    width: 1px;
-}
-    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" defer></script>
+    <script src="script/script.js" defer></script>
+    <script src="script/menu.js" defer></script>
+    <script src="script/test.js" defer></script>
 </head>
 <body>
-    <button onclick="startAnimation()">Button</button>
-    <button onclick="blinkAnimation()">Blink</button>
-    <button onclick="showGrid()">Grid</button>
-    <div id="cube">
-        <svg id="leftEye" viewBox="0 0 400 800" preserveAspectRatio="none">
-            <line class="leftX" x1="44" y1="88" x2="356" y2="712" />
-            <line class="rightX" x1="356" y1="88" x2="44" y2=" 712" />
-            <path class="topLeftC" d="M 100 40 Q 10 90 10 200" />
-            <path class="topRightC" d="M 300 40 Q 390 90 390 200" />
-            <path class="bottomLeftC" d="M 100 760 Q 10 710 10 600" />
-            <path class="bottomRightC" d="M 300 760 Q 390 710 390 600" />
-        </svg>
-        <svg id="rightEye" viewBox="0 0 400 800" preserveAspectRatio="none">
-            <line class="leftX" x1="44" y1="88" x2="356" y2="712" />
-            <line class="rightX" x1="356" y1="88" x2="44" y2=" 712" />
-            <path class="topLeftC" d="M 100 40 Q 10 90 10 200" />
-            <path class="topRightC" d="M 300 40 Q 390 90 390 200" />
-            <path class="bottomLeftC" d="M 100 760 Q 10 710 10 600" />
-            <path class="bottomRightC" d="M 300 760 Q 390 710 390 600" />
-        </svg>
-        <svg id="chin" viewBox="0 0 1500 500" preserveAspectRatio="none">
-            <path id="upperLip" d="M 700 150 Q 750 150 800 150" />
-            <path id="underLip" d="M 700 150 Q 750 150 800 150" />
-        </svg>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
-    <script src="script/sucrose.js"></script>
+    <main>
+        <section id="user-in-out">
+            <div id="user-output">
+                user-output
+            </div>
+            <div id="user-input">
+                <form >
+                    <label for="">user-input</label>
+                    <input type="text" />
+                </form>
+            </div>
+        </section>
+        <section id="sucrose">
+            <div id="cube">
+                <svg viewBox="0 0 450 450" preserveAspectRatio="none" fill="none" stroke-width="3">
+                    <g id="leftEye" stroke="yellow">
+                        <path class="leftX" d="M 72 84 168 276" />
+                        <path class="rightX" d="M 168 84 72 276" />
+
+                        <path class="topLeftC" d="M 60 120 C 60 99 71.16 78.96 90 68.04" />
+                        <path class="topRightC" d="M 180 120 C 180 99 168.84 78.96 150 68.04" />
+                        <path class="bottomLeftC" d="M 60 240 C 60 261 71.16 281.04 90 291.96" />
+                        <path class="bottomRightC" d="M 180 240 C 180 261 168.84 281.04 150 291.96" />
+                    </g>
+                    <g id="rightEye" stroke="yellow">
+                        <path class="leftX" d="M 282 84 378 276" />
+                        <path class="rightX" d="M 378 84 282 276"  />
+
+                        <path class="topLeftC" d="M 270 120 C 270 99 281.16 78.96 300 68.04" />
+                        <path class="topRightC" d="M 390 120 C 390 99 378.84 78.96 360 68.04" />
+                        <path class="bottomLeftC" d="M 270 240 C 270 261 281.16 281.04 300 291.96" />
+                        <path class="bottomRightC" d="M 390 240 C 390 261 378.84 281.04 360 291.96" />
+                    </g>
+                    <g id="mouth" stroke="yellow">
+                        <path id="upperLip" d="M 210 330 C 210 350 240 350 240 330" />
+                        <path id="underLip" d="M 210 330 C 210 350 240 350 240 330" />
+                    </g>
+                </svg>
+            </div>
+            <button onclick="startAnimation()">Change</button>
+            <button onclick="blinkAnimation()">Blink</button>
+            <button onclick="showGrid()">Grid</button>
+        </section>
+        <section id="sucrose-output">
+            sucrose-output
+        </section>
+        <section id="menu">
+            <input id="menu-icon" type="checkbox" onclick="menuPressed()">
+            <label for="menu-icon" id="menu-icon-container">
+                <div id="menu-icon-block1" class="menu-icon-block"></div>
+                <div id="menu-icon-block2" class="menu-icon-block"></div>
+                <div id="menu-icon-block3" class="menu-icon-block"></div>
+            </label>
+            <nav>
+                <svg id="navbar" viewBox="0 0 238 238" preserveAspectRatio="none">
+                    <!-- future
+                    <defs>
+                        <pattern id="image" x="0" y="0" patternUnits="userSpaceOnUse" height="100" width="100">
+                             Scale the image to fit the pattern 
+                            <image x="0" y="0" width="100" height="100" preserveAspectRatio="xMidYMid slice" xlink:href="https://cdn.britannica.com/79/232779-050-6B0411D7/German-Shepherd-dog-Alsatian.jpg"></image>
+                        </pattern>
+                    </defs>
+                    <circle r="100" cx="100" cy="100" fill="url(#image)" />
+                    -->
+                    <circle r="100" cx="119" cy="119" />
+                </svg>
+            </nav>
+        </section>
+    </main>
 </body>
 </html>
