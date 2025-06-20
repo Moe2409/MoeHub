@@ -131,6 +131,8 @@ mainNavigationButtons.settings.subButtons = [new MainNavigationButton("changeCol
 
 const mainNavigationButtonsKeys = Object.keys(mainNavigationButtons);
 
+console.log(mainNavigationButtonsKeys)
+
 mainNavigationButtonsKeys.forEach((key, index) => {
     const buttonRadius = 18;
     const navbarRadius = 100;
@@ -261,6 +263,6 @@ test.remove();
 $(document).ready(function () {
     $(".main-navigation-button").on("click", function() {
         const key = this.id;
-        console.log(`You clicked: ${mainNavigationButtons[key].subButtons}`)
+        console.log(`You clicked: ${JSON.stringify(mainNavigationButtons[key].subButtons)}`)
     })
 });
