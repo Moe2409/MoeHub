@@ -6,12 +6,14 @@
     <title>MoeHub</title>
     <link rel="stylesheet" href="style/main.css" />
     <link rel="icon" href="pictures/LEON Logo.svg">
+    <link rel="stylesheet" href="style/theme.css">
 
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" defer></script>
     <script src="script/script.js" defer></script>
     <script src="script/menu.js" defer></script>
     <script src="script/sucrose.js" defer></script>
+    <script src="script/sucroseSettings.js" defer></script>
 </head>
 <body>
     <main>
@@ -29,7 +31,7 @@
         <section id="sucrose">
             <div id="cube">
                 <svg viewBox="0 0 450 450" preserveAspectRatio="none" fill="none" stroke-width="3">
-                    <g id="leftEye" stroke="yellow">
+                    <g id="leftEye">
                         <path class="leftX" d="M 72 84 168 276" />
                         <path class="rightX" d="M 168 84 72 276" />
 
@@ -38,7 +40,7 @@
                         <path class="bottomLeftC" d="M 60 240 C 60 261 71.16 281.04 90 291.96" />
                         <path class="bottomRightC" d="M 180 240 C 180 261 168.84 281.04 150 291.96" />
                     </g>
-                    <g id="rightEye" stroke="yellow">
+                    <g id="rightEye">
                         <path class="leftX" d="M 282 84 378 276" />
                         <path class="rightX" d="M 378 84 282 276"  />
 
@@ -47,7 +49,7 @@
                         <path class="bottomLeftC" d="M 270 240 C 270 261 281.16 281.04 300 291.96" />
                         <path class="bottomRightC" d="M 390 240 C 390 261 378.84 281.04 360 291.96" />
                     </g>
-                    <g id="mouth" stroke="yellow">
+                    <g id="mouth">
                         <path id="upperLip" d="M 210 330 C 210 350 240 350 240 330" />
                         <path id="underLip" d="M 210 330 C 210 350 240 350 240 330" />
                     </g>
