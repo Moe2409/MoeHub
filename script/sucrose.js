@@ -257,83 +257,61 @@ function startAnimation() {
     x += 1
 };
 
-setInterval(blinkAnimation, 10000);
-/*
-function angryAnimation(t, w) {
-    eyeStates.angryLeft.animation("#leftEye", t, w)
-    eyeStates.angryRight.animation("#rightEye", t, w)
-    mouthStates.frown.animation("#upperLip", t, w)
-    mouthStates.frown.animation("#underLip", t, w)
-};
-
-function disgustAnimation(t, w) {
-    eyeStates.disgust.animation("#leftEye", t, w)
-    eyeStates.disgust.animation("#rightEye", t, w)
-    mouthStates.straight.animation("#upperLip", t, w)
-    mouthStates.straight.animation("#underLip", t, w)
-};
-
-function smugAnimation(t, w) {
-    eyeStates.smug.animation("#leftEye", t, w)
-    eyeStates.smug.animation("#rightEye", t, w)
-    mouthStates.bigSmileUpper.animation("#upperLip", t, w)
-    mouthStates.bigSmileUnder.animation("#underLip", t, w)
-};
-
-function stunnedAnimation(t, w) {
-    eyeStates.wideEye.animation("#leftEye", t, w)
-    eyeStates.wideEye.animation("#rightEye", t, w)
-    mouthStates.smallMouth.animation("#upperLip", t, w)
-    mouthStates.smallMouth.animation("#underLip", t, w)
+const savedColor = localStorage.getItem("newColor");
+if (savedColor) {
+    document.documentElement.style.setProperty("--color", savedColor);
+    $("#sucroseColor").val(savedColor); // oppdater input-feltet visuelt også
 }
 
-const emotions = [
-    smugAnimation,
-    angryAnimation,
-    closeAnimation,
-    disgustAnimation,
-    normalAnimation,
-    stunnedAnimation
-];
-*/
-const cube = document.getElementById("cube");
+const savedBackground = localStorage.getItem("newBackground");
+if (savedBackground) {
+    document.documentElement.style.setProperty("--backgroundColor", savedBackground);
+    $("#sucroseBackground").val(savedBackground); // oppdater input-feltet visuelt også
+}
 
-for (let i = 0; i <= 15; i++) {
-    let div = document.createElement("div");
-    div.className = "horisontal-line"; 
-    div.style.top = `${i*100/15}%`;
-    cube.appendChild(div);
 
-    div = document.createElement("div");
-    div.className = "vertical-line"; 
-    div.style.left = `${i*100/15}%`;
-    cube.appendChild(div);
-};
+$(document).ready(function () {
+    setInterval(blinkAnimation, 10000);
 
-let showGridActive = false;
-function showGrid() {
-    const horisontal_lines = document.querySelectorAll('.horisontal-line');
-    const vertical_lines = document.querySelectorAll('.vertical-line');
+    const cube = document.getElementById("cube");
 
-    if (showGridActive) {
-        horisontal_lines.forEach(horisontal_line => {
-            horisontal_line.style.display = 'none';
-        });
-    
-        vertical_lines.forEach(vertical_line => {
-            vertical_line.style.display = 'none';
-        });
+    for (let i = 0; i <= 15; i++) {
+        let div = document.createElement("div");
+        div.className = "horisontal-line"; 
+        div.style.top = `${i*100/15}%`;
+        cube.appendChild(div);
 
-        showGridActive = false;
-    } else {
-        horisontal_lines.forEach(horisontal_line => {
-            horisontal_line.style.display = 'block';
-        });
-    
-        vertical_lines.forEach(vertical_line => {
-            vertical_line.style.display = 'block';
-        });
-
-        showGridActive = true;
+        div = document.createElement("div");
+        div.className = "vertical-line"; 
+        div.style.left = `${i*100/15}%`;
+        cube.appendChild(div);
     };
-};
+
+    let showGridActive = false;
+    function showGrid() {
+        const horisontal_lines = document.querySelectorAll('.horisontal-line');
+        const vertical_lines = document.querySelectorAll('.vertical-line');
+
+        if (showGridActive) {
+            horisontal_lines.forEach(horisontal_line => {
+                horisontal_line.style.display = 'none';
+            });
+        
+            vertical_lines.forEach(vertical_line => {
+                vertical_line.style.display = 'none';
+            });
+
+            showGridActive = false;
+        } else {
+            horisontal_lines.forEach(horisontal_line => {
+                horisontal_line.style.display = 'block';
+            });
+        
+            vertical_lines.forEach(vertical_line => {
+                vertical_line.style.display = 'block';
+            });
+
+            showGridActive = true;
+        };
+    };
+});
