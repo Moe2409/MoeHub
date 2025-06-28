@@ -5,7 +5,6 @@ $(document).ready(function () {
         document.documentElement.style.setProperty("--color", color);
     });
 
-
     $("#sucroseBackground").on("input", function () {
         const color = $(this).val();
         localStorage.setItem("newBackground", color);
