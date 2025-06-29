@@ -260,13 +260,11 @@ function startAnimation() {
 const savedColor = localStorage.getItem("newColor");
 if (savedColor) {
     document.documentElement.style.setProperty("--color", savedColor);
-    $("#sucroseColor").val(savedColor); // oppdater input-feltet visuelt også
 }
 
 const savedBackground = localStorage.getItem("newBackground");
 if (savedBackground) {
     document.documentElement.style.setProperty("--backgroundColor", savedBackground);
-    $("#sucroseBackground").val(savedBackground); // oppdater input-feltet visuelt også
 }
 
 
