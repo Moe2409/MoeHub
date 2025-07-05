@@ -267,6 +267,33 @@ if (savedBackground) {
     document.documentElement.style.setProperty("--backgroundColor", savedBackground);
 }
 
+let showGridActive = false;
+function showGrid() {
+    const horisontal_lines = document.querySelectorAll('.horisontal-line');
+    const vertical_lines = document.querySelectorAll('.vertical-line');
+
+    if (showGridActive) {
+        horisontal_lines.forEach(horisontal_line => {
+            horisontal_line.style.display = 'none';
+        });
+    
+        vertical_lines.forEach(vertical_line => {
+            vertical_line.style.display = 'none';
+        });
+
+        showGridActive = false;
+    } else {
+        horisontal_lines.forEach(horisontal_line => {
+            horisontal_line.style.display = 'block';
+        });
+    
+        vertical_lines.forEach(vertical_line => {
+            vertical_line.style.display = 'block';
+        });
+
+        showGridActive = true;
+    };
+};
 
 $(document).ready(function () {
     setInterval(blinkAnimation, 10000);
@@ -283,33 +310,5 @@ $(document).ready(function () {
         div.className = "vertical-line"; 
         div.style.left = `${i*100/15}%`;
         cube.appendChild(div);
-    };
-
-    let showGridActive = false;
-    function showGrid() {
-        const horisontal_lines = document.querySelectorAll('.horisontal-line');
-        const vertical_lines = document.querySelectorAll('.vertical-line');
-
-        if (showGridActive) {
-            horisontal_lines.forEach(horisontal_line => {
-                horisontal_line.style.display = 'none';
-            });
-        
-            vertical_lines.forEach(vertical_line => {
-                vertical_line.style.display = 'none';
-            });
-
-            showGridActive = false;
-        } else {
-            horisontal_lines.forEach(horisontal_line => {
-                horisontal_line.style.display = 'block';
-            });
-        
-            vertical_lines.forEach(vertical_line => {
-                vertical_line.style.display = 'block';
-            });
-
-            showGridActive = true;
-        };
     };
 });
