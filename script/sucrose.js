@@ -200,11 +200,11 @@ const mouthStates = {
 };
 
 const upperLip = {
-
+    bigSmile: new Mouth("M 45 240 C 195 300 255 300 405 240")
 };
 
 const underLip = {
-
+    bigSmile: new Mouth("M 45 240 C 180 390 270 390 405 240")
 };
 
 const normalAnimation = (t, w) => {
@@ -267,6 +267,8 @@ const slyAmusementAnimation = (t, w) => {
 const grinAnimation = (t, w) => {
     leftEye.closedHappy.animation("#leftEye", t, w)
     rightEye.closedHappy.animation("#rightEye", t, w)
+    upperLip.bigSmile.animation("#upperLip", t, w)
+    underLip.bigSmile.animation("#underLip", t, w)
 };
 
 const emotions = [
