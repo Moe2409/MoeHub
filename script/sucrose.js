@@ -255,6 +255,7 @@ function startAnimation() {
     if (x >= emotions.length) {
         x = 0
     }
+    console.log(emotions[x])
     emotions[x](0.3, 0)
     currentState = emotions[x]
     x += 1
