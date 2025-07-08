@@ -78,7 +78,7 @@ const leftEye = {
         "M 180 84 C 150 84 120 84 120 84",
         "M 60 276 C 90 276 120 276 120 276",
         "M 180 276 C 150 276 120 276 120 276",
-        "M 72 84 168 276",
+        "M 72 84 167 276",
         "M 168 84 72 276"
     ),
     angry: new Eye(
@@ -112,10 +112,15 @@ const leftEye = {
         "M 180 165 C 171 189 150 210 120 210",
         "M 105 150 134 208",
         "M 135 150 106 208"
-    )/*,
+    ),
     closedHappy: new Eye(
-
-    )*/
+        "M 60 195 C 69 171 90 150 120 150",
+        "M 180 195 C 171 171 150 150 120 150",
+        "M 60 195 C 69 171 90 150 120 150",
+        "M 180 195 C 171 171 150 150 120 150",
+        "M 106 152 106 152",
+        "M 134 152 134 152"
+    )
 };
 
 const rightEye = {
@@ -174,6 +179,14 @@ const rightEye = {
         "M 390 165 C 381 189 360 210 330 210",/*"M 390 195 C 360 210 345 210 330 210"*/ 
         "M 315 150 344 208",/*"M 316 152 345 210"*/
         "M 345 150 316 208"/*"M 344 152 315 210"*/ 
+    ),
+    closedHappy: new Eye(
+        "M 270 195 C 279 171 300 150 330 150",
+        "M 390 195 C 381 171 360 150 330 150",
+        "M 270 195 C 279 171 300 150 330 150",
+        "M 390 195 C 381 171 360 150 330 150",
+        "M 316 152 316 152",
+        "M 344 152 344 152"
     )
 };
 
@@ -199,8 +212,13 @@ const closeAnimation = (t, w) => {
 };
 
 const blinkAnimation = () => {
-    closeAnimation(0.15, 0)
-    currentState(0.2, 0.25)
+    if (closedEyes.includes(currentState)) {
+        console.log("Already closed")
+    }
+    else {
+        closeAnimation(0.15, 0)
+        currentState(0.2, 0.25)
+    }
 };
 
 const disgustAnimation = (t, w) => {
@@ -229,16 +247,22 @@ const stunnedAnimation = (t, w) => {
     rightEye.wideEye.animation("#rightEye", t, w)
     mouthStates.smallMouth.animation("#upperLip", t, w)
     mouthStates.smallMouth.animation("#underLip", t, w)
-}
+};
 
 const slyAmusementAnimation = (t, w) => {
     leftEye.slyAmusement.animation("#leftEye", t, w)
     rightEye.slyAmusement.animation("#rightEye", t, w)
     mouthStates.smile.animation("#upperLip", t, w)
     mouthStates.smile.animation("#underLip", t, w)
-}
+};
+
+const grinAnimation = (t, w) => {
+    leftEye.closedHappy.animation("#leftEye", t, w)
+    rightEye.closedHappy.animation("#rightEye", t, w)
+};
 
 const emotions = [
+    grinAnimation,
     closeAnimation,
     disgustAnimation,
     angryAnimation,
@@ -246,6 +270,11 @@ const emotions = [
     stunnedAnimation,
     slyAmusementAnimation,
     normalAnimation
+];
+
+const closedEyes = [
+    closeAnimation,
+    grinAnimation
 ];
 
 var currentState = normalAnimation;
