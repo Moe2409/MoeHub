@@ -112,7 +112,10 @@ const leftEye = {
         "M 180 165 C 171 189 150 210 120 210",
         "M 105 150 134 208",
         "M 135 150 106 208"
-    )
+    )/*,
+    closedHappy: new Eye(
+
+    )*/
 };
 
 const rightEye = {

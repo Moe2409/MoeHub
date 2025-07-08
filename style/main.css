@@ -28,31 +28,13 @@ button {
 }
 
 #leftEye, #rightEye, #mouth {
-    position: absolute;
     stroke: var(--color);
     stroke-width: 6; 
     fill: transparent;
     filter: drop-shadow(0 0 3vh var(--color));
 }
 
-#leftEye, #rightEye {
-    width: calc(var(--width)*4/15);
-    height: calc(var(--width)*8/15);
-    top: calc(var(--width)*2/15);
-}
-
-#leftEye {
-    left: calc(var(--width)*2/15);
-}
-
-#rightEye {
-    right: calc(var(--width)*2/15);
-}
-
 #mouth {
-    width: var(--width);
-    height: calc(var(--width)*5/15);
-    top: calc(var(--width)*10/15);
     stroke-width: 3;
 }
 

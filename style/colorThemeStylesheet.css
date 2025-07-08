@@ -1,0 +1,17 @@
+#cube {
+    position: relative;
+    background-color: var(--backgroundColor);
+    fill: transparent;
+    margin: 0 10%;
+}
+
+#leftEye, #rightEye, #mouth {
+    stroke: var(--color);
+    stroke-width: 6; 
+    fill: transparent;
+    filter: drop-shadow(0 0 3vh var(--color));
+}
+
+#mouth {
+    stroke-width: 3;
+}
