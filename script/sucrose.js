@@ -199,6 +199,14 @@ const mouthStates = {
     smallMouth: new Mouth("M 220 345 C 225 345 225 345 230 345")
 };
 
+const upperLip = {
+
+};
+
+const underLip = {
+
+};
+
 const normalAnimation = (t, w) => {
     leftEye.normal.animation("#leftEye", t, w)
     rightEye.normal.animation("#rightEye", t, w)
