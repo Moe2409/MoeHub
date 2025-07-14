@@ -200,11 +200,12 @@ const mouthStates = {
 };
 
 const upperLip = {
-    bigSmile: new Mouth("M 45 240 C 195 300 255 300 405 240")
+    bigSmile: new Mouth("M 45 225 C 115 280 180 240 225 240 C 270 240 335 280 405 225")
+    /*M 45 240 C 115 280 200 240 225 240 C 250 240 335 280 405 240*/ 
 };
 
 const underLip = {
-    bigSmile: new Mouth("M 45 240 C 180 390 270 390 405 240")
+    bigSmile: new Mouth("M 45 225 C 120 280 100 315 225 315 C 350 315 330 280 405 225")
 };
 
 const normalAnimation = (t, w) => {
