@@ -43,17 +43,23 @@ class Eye {
 };
 
 class Mouth {
-    constructor(lips) {
-        this.lips = lips
+    constructor(lip, teeths) {
+        this.lip = lip
+        this.teeths = teeths
     }
     
     animation(lipSelector, t, w) {
-        gsap.to(`${lipSelector}`, {
+        gsap.to(`${lipSelector} .lip`, {
             duration: t,
-            attr: {d: this.lips},
+            attr: {d: this.lip},
             delay: w
         });
-    }
+        gsap.to(`${lipSelector} .teeths `, {
+            duration: t,
+            attr: {d: this.teeths},
+            delay: w
+        });
+    };
 };
 
 const leftEye = {
@@ -200,19 +206,42 @@ const mouthStates = {
 };
 
 const upperLip = {
-    bigSmile: new Mouth("M 45 225 C 115 280 180 240 225 240 C 270 240 335 280 405 225")
+    bigSmile: new Mouth(
+        "M 45 225 C 115 280 180 240 225 240 C 270 240 335 280 405 225",
+        `M 90 249 C 88 255 90 265 95 270 C 98 260 102 255
+        106 252 C 104 256 105 280 112 287 C 116 264 128 254 
+        132 254 C 128 275 132 288 138 303 C 139 290 145 270 
+        160 251 C 156 270 162 290 168 311 C 172 290 180 262 
+        190 245 C 189 262 195 290 204 314 C 207 291 213 268 
+        225 243 C 237 268 243 291 246 314 C 255 290 261 262 
+        260 245 C 270 262 278 290 282 311 C 288 290 294 270 
+        290 251 C 305 270 311 290 312 303 C 318 288 322 275 
+        318 254 C 322 254 334 266 338 287 C 345 280 346 256 
+        344 252 C 348 255 352 260 355 270 C 360 265 362 255 360 249`
+    )
     /*M 45 240 C 115 280 200 240 225 240 C 250 240 335 280 405 240*/ 
 };
 
 const underLip = {
-    bigSmile: new Mouth("M 45 225 C 120 280 100 315 225 315 C 350 315 330 280 405 225")
+    bigSmile: new Mouth(
+        "M 45 225 C 120 280 100 315 225 315 C 350 315 330 280 405 225",
+        `M 95 270 C 98 260 102 255 106 252 C 104 256 105 280 
+        112 287 C 116 266 128 254 132 254 C 128 275 132 288 
+        138 303 C 139 290 145 270 160 251 C 156 270 162 290 
+        168 311 C 172 290 180 262 190 245 C 189 262 195 290 
+        204 314 C 207 291 213 268 225 243 C 237 268 243 291 
+        246 314 C 255 290 261 262 260 245 C 270 262 278 290 
+        282 311 C 288 290 294 270 290 251 C 305 270 311 290 
+        312 303 C 318 288 322 275 318 254 C 322 254 334 266 
+        338 287 C 345 280 346 256 344 252 C 348 255 352 260 355 270`
+    )
 };
 
 const normalAnimation = (t, w) => {
     leftEye.normal.animation("#leftEye", t, w)
     rightEye.normal.animation("#rightEye", t, w)
     mouthStates.uSmile.animation("#upperLip", t ,w)
-    mouthStates.uSmile.animation("#underLip", t, w)
+    mouthStates.uSmile.animation("#lowerLip", t, w)
 };
 
 const closeAnimation = (t, w) => {
@@ -234,42 +263,48 @@ const disgustAnimation = (t, w) => {
     leftEye.disgust.animation("#leftEye", t, w)
     rightEye.disgust.animation("#rightEye", t, w)
     mouthStates.straight.animation("#upperLip", t, w)
-    mouthStates.straight.animation("#underLip", t, w)
+    mouthStates.straight.animation("#lowerLip", t, w)
 };
 
 const angryAnimation = (t, w) => {
     leftEye.angry.animation("#leftEye", t, w)
     rightEye.angry.animation("#rightEye", t, w)
     mouthStates.frown.animation("#upperLip", t, w)
-    mouthStates.frown.animation("#underLip", t, w)
+    mouthStates.frown.animation("#lowerLip", t, w)
 };
 
 const smugAnimation = (t, w) => {
     leftEye.smug.animation("#leftEye", t, w)
     rightEye.smug.animation("#rightEye", t, w)
     mouthStates.smile.animation("#upperLip", t, w)
-    mouthStates.smile.animation("#underLip", t, w)
+    mouthStates.smile.animation("#lowerLip", t, w)
 };
 
 const stunnedAnimation = (t, w) => {
     leftEye.wideEye.animation("#leftEye", t, w)
     rightEye.wideEye.animation("#rightEye", t, w)
     mouthStates.smallMouth.animation("#upperLip", t, w)
-    mouthStates.smallMouth.animation("#underLip", t, w)
+    mouthStates.smallMouth.animation("#lowerLip", t, w)
 };
 
 const slyAmusementAnimation = (t, w) => {
     leftEye.slyAmusement.animation("#leftEye", t, w)
     rightEye.slyAmusement.animation("#rightEye", t, w)
     mouthStates.smile.animation("#upperLip", t, w)
-    mouthStates.smile.animation("#underLip", t, w)
+    mouthStates.smile.animation("#lowerLip", t, w)
 };
 
 const grinAnimation = (t, w) => {
     leftEye.closedHappy.animation("#leftEye", t, w)
     rightEye.closedHappy.animation("#rightEye", t, w)
     upperLip.bigSmile.animation("#upperLip", t, w)
-    underLip.bigSmile.animation("#underLip", t, w)
+    underLip.bigSmile.animation("#lowerLip", t, w)
+
+    gsap.to(`#mouthClipValue`, {
+        duration: t,
+        attr: {d: "M 45 225 C 115 280 180 240 225 240 C 270 240 335 280 405 225 L 405 225 C 330 280 350 315 225 315 C 100 315 120 280 45 225 Z"},
+        delay: w
+    });
 };
 
 const emotions = [
@@ -296,7 +331,7 @@ function startAnimation() {
         x = 0
     }
     console.log(emotions[x])
-    emotions[x](0.3, 0)
+    emotions[x](3.3, 0)
     currentState = emotions[x]
     x += 1
 };
