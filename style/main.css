@@ -136,9 +136,12 @@ main section {
     top: 85%;
 }
 
+.main-navigation-button {
+  cursor: pointer;
+}
+
 .main-navigation-button:hover {
     fill: var(--color);
-    cursor: pointer;
 }
 
 @media screen and (max-width: 1000px) {
