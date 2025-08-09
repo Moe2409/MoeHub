@@ -263,6 +263,7 @@ test.remove();
 $(document).ready(function () {
     $(".main-navigation-button").on("click", function() {
         const key = this.id;
+        window.location.href = "changeColorTheme.html"
         console.log(`You clicked: ${JSON.stringify(mainNavigationButtons[key].subButtons)}`)
-    })
+    });
 });
