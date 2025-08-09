@@ -62,6 +62,8 @@ class Mouth {
     };
 };
 
+
+
 const leftEye = {
     normal: new Eye(
         "M 60 120 C 60 99 71.16 78.96 90 68.04",
@@ -299,12 +301,11 @@ const grinAnimation = (t, w) => {
     rightEye.closedHappy.animation("#rightEye", t, w)
     upperLip.bigSmile.animation("#upperLip", t, w)
     underLip.bigSmile.animation("#lowerLip", t, w)
-
     gsap.to(`#mouthClipValue`, {
-        duration: t,
-        attr: {d: "M 45 225 C 115 280 180 240 225 240 C 270 240 335 280 405 225 L 405 225 C 330 280 350 315 225 315 C 100 315 120 280 45 225 Z"},
-        delay: w
-    });
+            duration: t,
+            attr: {d: "M 45 225 C 115 280 180 240 225 240 C 270 240 335 280 405 225 L 405 225 C 330 280 350 315 225 315 C 100 315 120 280 45 225 Z"},
+            delay: w
+        });
 };
 
 const emotions = [
@@ -331,7 +332,7 @@ function startAnimation() {
         x = 0
     }
     console.log(emotions[x])
-    emotions[x](3.3, 0)
+    emotions[x](0.3, 0)
     currentState = emotions[x]
     x += 1
 };
