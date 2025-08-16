@@ -53,23 +53,31 @@ class EyeAnimation {
 };
 
 class Mouth {
-    constructor(lip, teeths) {
+    constructor(lipSelector, lip, teeths) {
+        this.lipSelector = lipSelector
         this.lip = lip
         this.teeths = teeths
     }
-    
-    animation(lipSelector, t, w) {
-        gsap.to(`${lipSelector} .lip`, {
+};
+
+class MouthAnimation {
+    static animate(lip, t, w) {
+        gsap.to(`${lip.lipSelector} .lip`, {
             duration: t,
-            attr: {d: this.lip},
+            attr: {d: lip.lip},
             delay: w
         });
-        gsap.to(`${lipSelector} .teeths `, {
+        gsap.to(`${lip.lipSelector} .teeths `, {
             duration: t,
-            attr: {d: this.teeths},
+            attr: {d: lip.teeths},
             delay: w
         });
-    };
+         gsap.to(`#mouthClipValue`, {
+            duration: t,
+            attr: {d: "M 45 225 C 115 280 180 240 225 240 C 270 240 335 280 405 225 L 405 225 C 330 280 350 315 225 315 C 100 315 120 280 45 225"},
+            delay: w
+        });
+    }
 };
 
 class calculateClipValue {
@@ -249,6 +257,7 @@ const mouthStates = {
 
 const upperLip = {
     bigSmile: new Mouth(
+        "#upperLip",
         "M 45 225 C 115 280 180 240 225 240 C 270 240 335 280 405 225",
         `M 90 249 C 88 255 90 265 95 270 C 98 260 102 255
         106 252 C 104 256 105 280 112 287 C 116 264 128 254 
@@ -264,11 +273,12 @@ const upperLip = {
     /*M 45 240 C 115 280 200 240 225 240 C 250 240 335 280 405 240*/ 
 };
 
-const underLip = {
+const lowerLip = {
     bigSmile: new Mouth(
+        "#lowerLip",
         /*"M 45 225 C 120 280 100 315 225 315 C 350 315 330 280 405 225"*/
         "M 405 225 C 330 280 350 315 225 315 C 100 315 120 280 45 225",
-       /*Not changed yet*/`M 95 270 C 98 260 102 255 106 252 C 104 256 105 280 
+       `M 95 270 C 98 260 102 255 106 252 C 104 256 105 280 
         112 287 C 116 266 128 254 132 254 C 128 275 132 288 
         138 303 C 139 290 145 270 160 251 C 156 270 162 290 
         168 311 C 172 290 180 262 190 245 C 189 262 195 290 
@@ -340,13 +350,8 @@ const slyAmusementAnimation = (t, w) => {
 const grinAnimation = (t, w) => {
     EyeAnimation.animate(leftEye.closedHappy, t, w)
     EyeAnimation.animate(rightEye.closedHappy, t, w)
-    upperLip.bigSmile.animation("#upperLip", t, w)
-    underLip.bigSmile.animation("#lowerLip", t, w)
-    gsap.to(`#mouthClipValue`, {
-            duration: t,
-            attr: {d: "M 45 225 C 115 280 180 240 225 240 C 270 240 335 280 405 225 L 405 225 C 330 280 350 315 225 315 C 100 315 120 280 45 225"},
-            delay: w
-        });
+    MouthAnimation.animate(upperLip.bigSmile, t, w)
+    MouthAnimation.animate(lowerLip.bigSmile, t, w)
 };
 
 const emotions = [
@@ -373,7 +378,7 @@ function startAnimation() {
         x = 0
     }
     console.log(emotions[x])
-    emotions[x](0.4, 0)
+    emotions[x](3.4, 0)
     currentState = emotions[x]
     x += 1
 };
