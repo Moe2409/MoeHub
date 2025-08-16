@@ -53,28 +53,33 @@ class EyeAnimation {
 };
 
 class Mouth {
-    constructor(lipSelector, lip, teeths) {
-        this.lipSelector = lipSelector
-        this.lip = lip
-        this.teeths = teeths
+    constructor(lips, upperTeeths, lowerTeeths) {
+        this.lips = lips
+        this.upperTeeths = upperTeeths
+        this.lowerTeeths = lowerTeeths
     }
 };
 
 class MouthAnimation {
-    static animate(lip, t, w) {
-        gsap.to(`${lip.lipSelector} .lip`, {
+    static animate(lips, t, w) {
+        gsap.to(`#lips`, {
             duration: t,
-            attr: {d: lip.lip},
+            attr: {d: lips.lips},
             delay: w
         });
-        gsap.to(`${lip.lipSelector} .teeths `, {
+        gsap.to(`#upperTeeths`, {
             duration: t,
-            attr: {d: lip.teeths},
+            attr: {d: lips.upperTeeths},
+            delay: w
+        });
+        gsap.to(`#lowerTeeths`, {
+            duration: t,
+            attr: {d: lips.lowerTeeths},
             delay: w
         });
          gsap.to(`#mouthClipValue`, {
             duration: t,
-            attr: {d: "M 45 225 C 115 280 180 240 225 240 C 270 240 335 280 405 225 L 405 225 C 330 280 350 315 225 315 C 100 315 120 280 45 225"},
+            attr: {d: lips.lips},
             delay: w
         });
     }
@@ -246,7 +251,7 @@ const rightEye = {
     )
 };
 
-const mouthStates = {
+const mouthStatesOld = {
     normal: new Mouth("M 700 150 Q 750 150 800 150"),
     uSmile: new Mouth("M 210 330 C 210 350 240 350 240 330"),
     straight: new Mouth("M 210 345 C 225 345 225 345 240 345"),
@@ -269,8 +274,21 @@ const upperLip = {
         290 251 C 305 270 311 290 312 303 C 318 288 322 275 
         318 254 C 322 254 334 266 338 287 C 345 280 346 256 
         344 252 C 348 255 352 260 355 270 C 360 265 362 255 360 249`
+    ),
+    uSmile: new Mouth(
+        "#upperLip",
+        "M 210 330 C 210 339 216 345 225 345 C 234 345 240 339 240 330",
+        `M 210.00 330.00 C 210.00 330.00 210.00 330.00 210.00 330.00 C 210.00 330.00 210.00 330.00 
+        210.90 335.13 C 210.90 335.13 210.90 335.13 210.90 335.13 C 210.90 335.13 210.90 335.13 
+        213.51 339.64 C 213.51 339.64 213.51 339.64 213.51 339.64 C 213.51 339.64 213.51 339.64 
+        217.50 342.99 C 217.50 342.99 217.50 342.99 217.50 342.99 C 217.50 342.99 217.50 342.99 
+        222.40 344.77 C 222.40 344.77 222.40 344.77 222.40 344.77 C 222.40 344.77 222.40 344.77 
+        227.60 344.77 C 227.60 344.77 227.60 344.77 227.60 344.77 C 227.60 344.77 227.60 344.77 
+        232.50 342.99 C 232.50 342.99 232.50 342.99 232.50 342.99 C 232.50 342.99 232.50 342.99 
+        236.49 339.64 C 236.49 339.64 236.49 339.64 236.49 339.64 C 236.49 339.64 236.49 339.64 
+        239.10 335.13 C 239.10 335.13 239.10 335.13 239.10 335.13 C 239.10 335.13 239.10 335.13 
+        240.00 330.00 C 240.00 330.00 240.00 330.00 240.00 330.00 C 240.00 330.00 240.00 330.00 240.00 330.00`
     )
-    /*M 45 240 C 115 280 200 240 225 240 C 250 240 335 280 405 240*/ 
 };
 
 const lowerLip = {
@@ -287,19 +305,81 @@ const lowerLip = {
         282 311 C 288 290 294 270 290 251 C 305 270 311 290 
         312 303 C 318 288 322 275 318 254 C 322 254 334 266 
         338 287 C 345 280 346 256 344 252 C 348 255 352 260 355 270`
+    ),
+    uSmile: new Mouth(
+        "#lowerLip",
+        "M 240 330 C 240 339 234 345 225 345 C 216 345 210 339 210 330",
+        `M 210.23 332.60 C 210.23 332.60 210.23 332.60 210.23 332.60 C 210.23 332.60 210.23 332.60 
+        212.01 337.50 C 212.01 337.50 212.01 337.50 212.01 337.50 C 212.01 337.50 212.01 337.50 
+        215.35 341.41 C 215.35 341.41 215.35 341.41 215.35 341.41 C 215.35 341.41 215.35 341.41 
+        219.87 344.10 C 219.87 344.10 219.87 344.10 219.87 344.10 C 219.87 344.10 219.87 344.10
+        225.00 345.00 C 225.00 345.00 225.00 345.00 225.00 345.00 C 225.00 345.00 225.00 345.00
+        230.13 344.10 C 230.13 344.10 230.13 344.10 230.13 344.10 C 230.13 344.10 230.13 344.10 
+        234.65 341.41 C 234.65 341.41 234.65 341.41 234.65 341.41 C 234.65 341.41 234.65 341.41 
+        237.99 337.50 C 237.99 337.50 237.99 337.50 237.99 337.50 C 237.99 337.50 237.99 337.50 
+        239.77 332.60 C 239.77 332.60 239.77 332.60 239.77 332.60 C 239.77 332.60 239.77 332.60 239.77 332.60`
+    )
+};
+
+const mouthStates = {
+    bigSmile: new Mouth(
+        `M 45 225 C 115 280 180 240 225 240 C 270 240 335 280 405 225 
+        L 405 225 C 330 280 350 315 225 315 C 100 315 120 280 45 225`,
+        `M 90 249 C 88 255 90 265 95 270 C 98 260 102 255
+        106 252 C 104 256 105 280 112 287 C 116 264 128 254 
+        132 254 C 128 275 132 288 138 303 C 139 290 145 270 
+        160 251 C 156 270 162 290 168 311 C 172 290 180 262 
+        190 245 C 189 262 195 290 204 314 C 207 291 213 268 
+        225 243 C 237 268 243 291 246 314 C 255 290 261 262 
+        260 245 C 270 262 278 290 282 311 C 288 290 294 270 
+        290 251 C 305 270 311 290 312 303 C 318 288 322 275 
+        318 254 C 322 254 334 266 338 287 C 345 280 346 256 
+        344 252 C 348 255 352 260 355 270 C 360 265 362 255 360 249`,
+        `M 95 270 C 98 260 102 255 106 252 C 104 256 105 280 
+        112 287 C 116 266 128 254 132 254 C 128 275 132 288 
+        138 303 C 139 290 145 270 160 251 C 156 270 162 290 
+        168 311 C 172 290 180 262 190 245 C 189 262 195 290 
+        204 314 C 207 291 213 268 225 243 C 237 268 243 291 
+        246 314 C 255 290 261 262 260 245 C 270 262 278 290 
+        282 311 C 288 290 294 270 290 251 C 305 270 311 290 
+        312 303 C 318 288 322 275 318 254 C 322 254 334 266 
+        338 287 C 345 280 346 256 344 252 C 348 255 352 260 355 270`
+    ),
+    uSmile: new Mouth(
+        `M 210 330 C 210 339 216 345 225 345 C 234 345 240 339 240 330 
+        L 240 330 C 240 339 234 345 225 345 C 216 345 210 339 210 330`,
+        `M 210.00 330.00 C 210.00 330.00 210.00 330.00 210.00 330.00 C 210.00 330.00 210.00 330.00 
+        210.90 335.13 C 210.90 335.13 210.90 335.13 210.90 335.13 C 210.90 335.13 210.90 335.13 
+        213.51 339.64 C 213.51 339.64 213.51 339.64 213.51 339.64 C 213.51 339.64 213.51 339.64 
+        217.50 342.99 C 217.50 342.99 217.50 342.99 217.50 342.99 C 217.50 342.99 217.50 342.99 
+        222.40 344.77 C 222.40 344.77 222.40 344.77 222.40 344.77 C 222.40 344.77 222.40 344.77 
+        227.60 344.77 C 227.60 344.77 227.60 344.77 227.60 344.77 C 227.60 344.77 227.60 344.77 
+        232.50 342.99 C 232.50 342.99 232.50 342.99 232.50 342.99 C 232.50 342.99 232.50 342.99 
+        236.49 339.64 C 236.49 339.64 236.49 339.64 236.49 339.64 C 236.49 339.64 236.49 339.64 
+        239.10 335.13 C 239.10 335.13 239.10 335.13 239.10 335.13 C 239.10 335.13 239.10 335.13 
+        240.00 330.00 C 240.00 330.00 240.00 330.00 240.00 330.00 C 240.00 330.00 240.00 330.00 240.00 330.00`,
+        `M 210.23 332.60 C 210.23 332.60 210.23 332.60 210.23 332.60 C 210.23 332.60 210.23 332.60 
+        212.01 337.50 C 212.01 337.50 212.01 337.50 212.01 337.50 C 212.01 337.50 212.01 337.50 
+        215.35 341.41 C 215.35 341.41 215.35 341.41 215.35 341.41 C 215.35 341.41 215.35 341.41 
+        219.87 344.10 C 219.87 344.10 219.87 344.10 219.87 344.10 C 219.87 344.10 219.87 344.10
+        225.00 345.00 C 225.00 345.00 225.00 345.00 225.00 345.00 C 225.00 345.00 225.00 345.00
+        230.13 344.10 C 230.13 344.10 230.13 344.10 230.13 344.10 C 230.13 344.10 230.13 344.10 
+        234.65 341.41 C 234.65 341.41 234.65 341.41 234.65 341.41 C 234.65 341.41 234.65 341.41 
+        237.99 337.50 C 237.99 337.50 237.99 337.50 237.99 337.50 C 237.99 337.50 237.99 337.50 
+        239.77 332.60 C 239.77 332.60 239.77 332.60 239.77 332.60 C 239.77 332.60 239.77 332.60 239.77 332.60`
     )
 };
 
 const normalAnimation = (t, w) => {
     EyeAnimation.animate(leftEye.normal, t, w)
     EyeAnimation.animate(rightEye.normal, t, w)
-    mouthStates.uSmile.animation("#upperLip", t ,w)
-    mouthStates.uSmile.animation("#lowerLip", t, w)
+    MouthAnimation.animate(mouthStates.uSmile, t, w)
 };
 
 const closeAnimation = (t, w) => {
     EyeAnimation.animate(leftEye.close, t, w)
     EyeAnimation.animate(rightEye.close, t, w)
+    MouthAnimation.animate(mouthStates.uSmile, t, w)
 };
 
 const blinkAnimation = () => {
@@ -315,43 +395,37 @@ const blinkAnimation = () => {
 const disgustAnimation = (t, w) => {
     EyeAnimation.animate(leftEye.disgust, t, w)
     EyeAnimation.animate(rightEye.disgust, t, w)
-    mouthStates.straight.animation("#upperLip", t, w)
-    mouthStates.straight.animation("#lowerLip", t, w)
+    MouthAnimation.animate(mouthStates.uSmile, t, w)
 };
 
 const angryAnimation = (t, w) => {
     EyeAnimation.animate(leftEye.angry, t, w)
     EyeAnimation.animate(rightEye.angry, t, w)
-    mouthStates.frown.animation("#upperLip", t, w)
-    mouthStates.frown.animation("#lowerLip", t, w)
+    MouthAnimation.animate(mouthStates.uSmile, t, w)
 };
 
 const smugAnimation = (t, w) => {
     EyeAnimation.animate(leftEye.smug, t, w)
     EyeAnimation.animate(rightEye.smug, t, w)
-    mouthStates.smile.animation("#upperLip", t, w)
-    mouthStates.smile.animation("#lowerLip", t, w)
+    MouthAnimation.animate(mouthStates.uSmile, t, w)
 };
 
 const stunnedAnimation = (t, w) => {
     EyeAnimation.animate(leftEye.wideEye, t, w)
     EyeAnimation.animate(rightEye.wideEye, t, w)
-    mouthStates.smallMouth.animation("#upperLip", t, w)
-    mouthStates.smallMouth.animation("#lowerLip", t, w)
+    MouthAnimation.animate(mouthStates.uSmile, t, w)
 };
 
 const slyAmusementAnimation = (t, w) => {
     EyeAnimation.animate(leftEye.slyAmusement, t, w)
     EyeAnimation.animate(rightEye.slyAmusement, t, w)
-    mouthStates.smile.animation("#upperLip", t, w)
-    mouthStates.smile.animation("#lowerLip", t, w)
+    MouthAnimation.animate(mouthStates.uSmile, t, w)
 };
 
 const grinAnimation = (t, w) => {
     EyeAnimation.animate(leftEye.closedHappy, t, w)
     EyeAnimation.animate(rightEye.closedHappy, t, w)
-    MouthAnimation.animate(upperLip.bigSmile, t, w)
-    MouthAnimation.animate(lowerLip.bigSmile, t, w)
+    MouthAnimation.animate(mouthStates.bigSmile, t, w)
 };
 
 const emotions = [
@@ -378,7 +452,7 @@ function startAnimation() {
         x = 0
     }
     console.log(emotions[x])
-    emotions[x](0.4, 0)
+    emotions[x](0.3, 0)
     currentState = emotions[x]
     x += 1
 };
