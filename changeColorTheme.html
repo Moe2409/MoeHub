@@ -59,9 +59,14 @@
                         <path class="bottomRightC animated-element" d="M 180 240 C 180 261 168.84 281.04 150 291.96" />
                         <path class="bottomLeftC animated-element" d="M 90 291.96 C 71.16 281.04 60 261 60 240" />
                     </g>
+                    <defs>
+                        <clipPath id="rightEyeClip">
+                            <path id="rightEyeClipValue" class="animated-element" d="M 270 120 C 270 99 281.16 78.96 300 68.04 L 360 68.04 C 378.84 78.96 390 99 390 120 L 390 240 C 390 261 378.84 281.04 360 291.96 L 300 291.96 C 281.16 281.04 270 261 270 240 L 270 120 C 270 99 281.16 78.96 300 68.04" />
+                        </clipPath>
+                    </defs>
                     <g id="rightEye">
-                        <path class="leftX animated-element" d="M 282 84 378 276" />
-                        <path class="rightX animated-element" d="M 378 84 282 276"  />
+                        <path class="leftX animated-element" clip-path="url(#rightEyeClip)" d="M 282 84 378 276" />
+                        <path class="rightX animated-element" clip-path="url(#rightEyeClip)" d="M 378 84 282 276"  />
 
                         <path class="topLeftC animated-element" d="M 270 120 C 270 99 281.16 78.96 300 68.04" />
                         <path class="topRightC animated-element" d="M 360 68.04 C 378.84 78.96 390 99 390 120" />

@@ -1,5 +1,6 @@
 class Eye {
-    constructor(topLeftC, topRightC, bottomRightC, bottomLeftC, leftX, rightX) {
+    constructor(eyeSelector, topLeftC, topRightC, bottomRightC, bottomLeftC, leftX, rightX) {
+        this.eyeSelector = eyeSelector
         this.topLeftC = topLeftC
         this.topRightC = topRightC
         this.bottomRightC = bottomRightC
@@ -7,36 +8,45 @@ class Eye {
         this.leftX = leftX
         this.rightX = rightX
     }
+};
 
-    animation(eyeSelector, t, w) {
-        gsap.to(`${eyeSelector} .topLeftC`, {
+class EyeAnimation {
+    static animate(eye, t, w) {
+        gsap.to(`${eye.eyeSelector} .topLeftC`, {
             duration: t,
-            attr: {d: this.topLeftC},
+            attr: {d: eye.topLeftC},
             delay: w
         });
-        gsap.to(`${eyeSelector} .topRightC`, {
+        gsap.to(`${eye.eyeSelector} .topRightC`, {
             duration: t,
-            attr: {d: this.topRightC},
+            attr: {d: eye.topRightC},
             delay: w
         });
-        gsap.to(`${eyeSelector} .bottomLeftC`, {
+        gsap.to(`${eye.eyeSelector} .bottomLeftC`, {
             duration: t,
-            attr: {d: this.bottomLeftC},
+            attr: {d: eye.bottomLeftC},
             delay: w
         });
-        gsap.to(`${eyeSelector} .bottomRightC`, {
+        gsap.to(`${eye.eyeSelector} .bottomRightC`, {
             duration: t,
-            attr: {d: this.bottomRightC},
+            attr: {d: eye.bottomRightC},
             delay: w
         });
-        gsap.to(`${eyeSelector} .leftX`, {
+        gsap.to(`${eye.eyeSelector} .leftX`, {
             duration: t,
-            attr: {d: this.leftX},
+            attr: {d: eye.leftX},
             delay: w
         });
-        gsap.to(`${eyeSelector} .rightX`, {
+        gsap.to(`${eye.eyeSelector} .rightX`, {
             duration: t,
-            attr: {d: this.rightX},
+            attr: {d: eye.rightX},
+            delay: w
+        });
+        gsap.to(`${eye.eyeSelector}ClipValue`, {
+            duration: t,
+            attr: {d: `${
+                calculateClipValue.eye(eye)
+            }`},
             delay: w
         });
     }
@@ -80,6 +90,7 @@ class calculateClipValue {
 
 const leftEye = {
     normal: new Eye(
+        "#leftEye",
         "M 60 120 C 60 99 71.16 78.96 90 68.04",
         "M 150 68.04 C 168.84 78.96 180 99 180 120",
         "M 180 240 C 180 261 168.84 281.04 150 291.96",
@@ -88,6 +99,7 @@ const leftEye = {
         "M 168 84 72 276"
     ),
     close: new Eye(
+        "#leftEye",
         "M 60 180 C 90 180 120 180 120 180",
         "M 120 180 C 120 180 150 180 180 180",
         "M 180 180 C 150 180 120 180 120 180",
@@ -96,6 +108,7 @@ const leftEye = {
         "M 120 180 120 180"
     ),
     disgust: new Eye(
+        "#leftEye",
         "M 60 84 C 90 84 120 84 120 84",
         "M 120 84 C 120 84 150 84 180 84",
         "M 180 276 C 150 276 120 276 120 276",
@@ -104,6 +117,7 @@ const leftEye = {
         "M 168 84 72 276"
     ),
     angry: new Eye(
+        "#leftEye",
         "M 60 120 C 60 99 71.16 78.96 90 68.04",
         "M 150 68.04 C 150 89.04 161.16 109.08 180 120",
         "M 180 240 C 180 261 168.84 281.04 150 291.96",
@@ -112,6 +126,7 @@ const leftEye = {
         "M 160 100 72 276"
     ),
     smug: new Eye(
+        "#leftEye",
         "M 60 195 C 69 171 90 150 120 150",
         "M 120 150 C 150 150 171 171 180 195",
         "M 165 210 C 150 210 135 210 120 210",
@@ -120,6 +135,7 @@ const leftEye = {
         "M 134 152 105 210"
     ),
     wideEye: new Eye(
+        "#leftEye",
         "M 60 120 C 60 99 71.16 78.96 90 68.04",
         "M 150 68.04 C 168.84 78.96 180 99 180 120",
         "M 180 240 C 180 261 168.84 281.04 150 291.96",
@@ -128,6 +144,7 @@ const leftEye = {
         "M 130 160 110 200"
     ),
     slyAmusement: new Eye(
+        "#leftEye",
         "M 60 150 C 90 150 105 150 120 150",
         "M 120 150 C 135 150 150 150 180 150",
         "M 180 165 C 171 189 150 210 120 210",
@@ -136,6 +153,7 @@ const leftEye = {
         "M 135 150 106 208"
     ),
     closedHappy: new Eye(
+        "#leftEye",
         "M 60 195 C 69 171 90 150 120 150",
         "M 120 150 C 150 150 171 171 180 195",
         "M 180 195 C 171 171 150 150 120 150",
@@ -147,6 +165,7 @@ const leftEye = {
 
 const rightEye = {
     normal: new Eye(
+        "#rightEye",
         "M 270 120 C 270 99 281.16 78.96 300 68.04",
         "M 360 68.04 C 378.84 78.96 390 99 390 120",
         "M 390 240 C 390 261 378.84 281.04 360 291.96",
@@ -155,6 +174,7 @@ const rightEye = {
         "M 378 84 282 276"
     ),
     close: new Eye(
+        "#rightEye",
         "M 270 180 C 300 180 330 180 330 180",
         "M 330 180 C 330 180 360 180 390 180",
         "M 390 180 C 360 180 330 180 330 180",
@@ -163,6 +183,7 @@ const rightEye = {
         "M 330 180 330 180"
     ),
     disgust: new Eye(
+        "#rightEye",
         "M 270 84 C 300 84 330 84 330 84",
         "M 330 84 C 330 84 360 84 390 84",
         "M 390 276 C 360 276 330 276 330 276", 
@@ -171,6 +192,7 @@ const rightEye = {
         "M 378 84 282 276"
     ),
     angry: new Eye(
+        "#rightEye",
         "M 270 120 C 288.84 109.08 300 89.04 300 68.04",
         "M 360 68.04 C 378.84 78.96 390 99 390 120",
         "M 390 240 C 390 261 378.84 281.04 360 291.96",
@@ -179,6 +201,7 @@ const rightEye = {
         "M 378 84 282 276"
     ),
     smug: new Eye(
+        "#rightEye",
         "M 270 195 C 279 171 300 150 330 150",
         "M 330 150 C 360 150 381 171 390 195",
         "M 375 210 C 360 210 345 210 330 210",
@@ -187,6 +210,7 @@ const rightEye = {
         "M 344 152 315 210"
     ),
     wideEye: new Eye(
+        "#rightEye",
         "M 270 120 C 270 99 281.16 78.96 300 68.04",
         "M 360 68.04 C 378.84 78.96 390 99 390 120",
         "M 390 240 C 390 261 378.84 281.04 360 291.96",
@@ -195,6 +219,7 @@ const rightEye = {
         "M 340 160 320 200"
     ),
     slyAmusement: new Eye(
+        "#rightEye",
         "M 270 150 C 300 150 315 150 330 150",
         "M 330 150 C 345 150 360 150 390 150",
         "M 390 165 C 381 189 360 210 330 210",
@@ -203,6 +228,7 @@ const rightEye = {
         "M 345 150 316 208"
     ),
     closedHappy: new Eye(
+        "#rightEye",
         "M 270 195 C 279 171 300 150 330 150",
         "M 330 150 C 360 150 381 171 390 195",
         "M 390 195 C 381 171 360 150 330 150",
@@ -255,29 +281,15 @@ const underLip = {
 };
 
 const normalAnimation = (t, w) => {
-    leftEye.normal.animation("#leftEye", t, w)
-    rightEye.normal.animation("#rightEye", t, w)
+    EyeAnimation.animate(leftEye.normal, t, w)
+    EyeAnimation.animate(rightEye.normal, t, w)
     mouthStates.uSmile.animation("#upperLip", t ,w)
     mouthStates.uSmile.animation("#lowerLip", t, w)
-    gsap.to(`#leftEyeClipValue`, {
-            duration: t,
-            attr: {d: `${
-                calculateClipValue.eye(leftEye.normal)
-            }`},
-            delay: w
-        });
 };
 
 const closeAnimation = (t, w) => {
-    leftEye.close.animation("#leftEye", t, w)
-    rightEye.close.animation("#rightEye",t, w)
-    gsap.to(`#leftEyeClipValue`, {
-            duration: t,
-            attr: {d: `${
-                calculateClipValue.eye(leftEye.close)
-            }`},
-            delay: w
-        });
+    EyeAnimation.animate(leftEye.close, t, w)
+    EyeAnimation.animate(rightEye.close, t, w)
 };
 
 const blinkAnimation = () => {
@@ -291,90 +303,48 @@ const blinkAnimation = () => {
 };
 
 const disgustAnimation = (t, w) => {
-    leftEye.disgust.animation("#leftEye", t, w)
-    rightEye.disgust.animation("#rightEye", t, w)
+    EyeAnimation.animate(leftEye.disgust, t, w)
+    EyeAnimation.animate(rightEye.disgust, t, w)
     mouthStates.straight.animation("#upperLip", t, w)
     mouthStates.straight.animation("#lowerLip", t, w)
-    gsap.to(`#leftEyeClipValue`, {
-            duration: t,
-            attr: {d: `${
-                calculateClipValue.eye(leftEye.disgust)
-            }`},
-            delay: w
-        });
 };
 
 const angryAnimation = (t, w) => {
-    leftEye.angry.animation("#leftEye", t, w)
-    rightEye.angry.animation("#rightEye", t, w)
+    EyeAnimation.animate(leftEye.angry, t, w)
+    EyeAnimation.animate(rightEye.angry, t, w)
     mouthStates.frown.animation("#upperLip", t, w)
     mouthStates.frown.animation("#lowerLip", t, w)
-    gsap.to(`#leftEyeClipValue`, {
-            duration: t,
-            attr: {d: `${
-                calculateClipValue.eye(leftEye.angry)
-            }`},
-            delay: w
-        });
 };
 
 const smugAnimation = (t, w) => {
-    leftEye.smug.animation("#leftEye", t, w)
-    rightEye.smug.animation("#rightEye", t, w)
+    EyeAnimation.animate(leftEye.smug, t, w)
+    EyeAnimation.animate(rightEye.smug, t, w)
     mouthStates.smile.animation("#upperLip", t, w)
     mouthStates.smile.animation("#lowerLip", t, w)
-    gsap.to(`#leftEyeClipValue`, {
-            duration: t,
-            attr: {d: `${
-                calculateClipValue.eye(leftEye.smug)
-            }`},
-            delay: w
-        });
 };
 
 const stunnedAnimation = (t, w) => {
-    leftEye.wideEye.animation("#leftEye", t, w)
-    rightEye.wideEye.animation("#rightEye", t, w)
+    EyeAnimation.animate(leftEye.wideEye, t, w)
+    EyeAnimation.animate(rightEye.wideEye, t, w)
     mouthStates.smallMouth.animation("#upperLip", t, w)
     mouthStates.smallMouth.animation("#lowerLip", t, w)
-    gsap.to(`#leftEyeClipValue`, {
-            duration: t,
-            attr: {d: `${
-                calculateClipValue.eye(leftEye.wideEye)
-            }`},
-            delay: w
-        });
 };
 
 const slyAmusementAnimation = (t, w) => {
-    leftEye.slyAmusement.animation("#leftEye", t, w)
-    rightEye.slyAmusement.animation("#rightEye", t, w)
+    EyeAnimation.animate(leftEye.slyAmusement, t, w)
+    EyeAnimation.animate(rightEye.slyAmusement, t, w)
     mouthStates.smile.animation("#upperLip", t, w)
     mouthStates.smile.animation("#lowerLip", t, w)
-    gsap.to(`#leftEyeClipValue`, {
-            duration: t,
-            attr: {d: `${
-                calculateClipValue.eye(leftEye.slyAmusement)
-            }`},
-            delay: w
-        });
 };
 
 const grinAnimation = (t, w) => {
-    leftEye.closedHappy.animation("#leftEye", t, w)
-    rightEye.closedHappy.animation("#rightEye", t, w)
+    EyeAnimation.animate(leftEye.closedHappy, t, w)
+    EyeAnimation.animate(rightEye.closedHappy, t, w)
     upperLip.bigSmile.animation("#upperLip", t, w)
     underLip.bigSmile.animation("#lowerLip", t, w)
     gsap.to(`#mouthClipValue`, {
             duration: t,
             attr: {d: "M 45 225 C 115 280 180 240 225 240 C 270 240 335 280 405 225 L 405 225 C 330 280 350 315 225 315 C 100 315 120 280 45 225"},
-            delay: w
-        });
-    gsap.to(`#leftEyeClipValue`, {
-            duration: t,
-            attr: {d: `${
-                calculateClipValue.eye(leftEye.closedHappy)
-            }`},
             delay: w
         });
 };
@@ -462,11 +432,4 @@ $(document).ready(function () {
         div.style.left = `${i*100/15}%`;
         cube.appendChild(div);
     };
-
-    console.log(calculateClipValue.mouth(upperLip.bigSmile.lip, underLip.bigSmile.lip));
-    
-    let test = leftEye.closedHappy
-    console.log(test)
-    console.log(calculateClipValue.eye(test
-    ));
 });
