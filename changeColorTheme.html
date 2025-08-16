@@ -47,12 +47,12 @@
                 <svg viewBox="0 0 450 450" preserveAspectRatio="none" fill="none" stroke-width="3">
                     <defs>
                         <clipPath id="leftEyeClip">
-                            <path id="leftEyeClipValue" class="animated-element" d="M 210 330 C 210 339 216 345 225 345 C 234 345 240 339 240 330 L 240 330 C 240 339 234 345 225 345 C 216 345 210 339 210 330" />
+                            <path id="leftEyeClipValue" class="animated-element" d="M 60 120 C 60 99 71.16 78.96 90 68.04 L 150 68.04 C 168.84 78.96 180 99 180 120 L 180 240 C 180 261 168.84 281.04 150 291.96 L 90 291.96 C 71.16 281.04 60 261 60 240 L 60 120 C 60 99 71.16 78.96 90 68.04" />
                         </clipPath>
                     </defs>
                     <g id="leftEye">
-                        <path class="leftX animated-element" d="M 72 84 168 276" />
-                        <path class="rightX animated-element" d="M 168 84 72 276" />
+                        <path class="leftX animated-element" clip-path="url(#leftEyeClip)" d="M 72 84 168 276" />
+                        <path class="rightX animated-element" clip-path="url(#leftEyeClip)" d="M 168 84 72 276" />
 
                         <path class="topLeftC animated-element" d="M 60 120 C 60 99 71.16 78.96 90 68.04" />
                         <path class="topRightC animated-element" d="M 150 68.04 C 168.84 78.96 180 99 180 120" />

@@ -1,11 +1,11 @@
 class Eye {
-    constructor(topLeftC, topRightC, bottomRightC, bottomleftC, leftX, rightX) {
+    constructor(topLeftC, topRightC, bottomRightC, bottomLeftC, leftX, rightX) {
         this.topLeftC = topLeftC
         this.topRightC = topRightC
         this.bottomRightC = bottomRightC
-        this.bottomleftC = bottomleftC/*
+        this.bottomLeftC = bottomLeftC
         this.leftX = leftX
-        this.rightX = rightX*/
+        this.rightX = rightX
     }
 
     animation(eyeSelector, t, w) {
@@ -21,14 +21,14 @@ class Eye {
         });
         gsap.to(`${eyeSelector} .bottomLeftC`, {
             duration: t,
-            attr: {d: this.bottomleftC},
+            attr: {d: this.bottomLeftC},
             delay: w
         });
         gsap.to(`${eyeSelector} .bottomRightC`, {
             duration: t,
             attr: {d: this.bottomRightC},
             delay: w
-        });/*
+        });
         gsap.to(`${eyeSelector} .leftX`, {
             duration: t,
             attr: {d: this.leftX},
@@ -38,7 +38,7 @@ class Eye {
             duration: t,
             attr: {d: this.rightX},
             delay: w
-        });*/
+        });
     }
 };
 
@@ -63,8 +63,14 @@ class Mouth {
 };
 
 class calculateClipValue {
-    static eye() {
-        return 0;
+    static eye(eye) {
+        let result = eye.topLeftC + 
+        eye.topRightC.replace("M", " L") + 
+        eye.bottomRightC.replace("M", " L") + 
+        eye.bottomLeftC.replace("M", " L") +
+        eye.topLeftC.replace("M", " L");
+
+        return result;
     };
     static mouth(upperLip, lowerLip) {
         let result = upperLip + lowerLip.replace("M", " L");
@@ -253,11 +259,25 @@ const normalAnimation = (t, w) => {
     rightEye.normal.animation("#rightEye", t, w)
     mouthStates.uSmile.animation("#upperLip", t ,w)
     mouthStates.uSmile.animation("#lowerLip", t, w)
+    gsap.to(`#leftEyeClipValue`, {
+            duration: t,
+            attr: {d: `${
+                calculateClipValue.eye(leftEye.normal)
+            }`},
+            delay: w
+        });
 };
 
 const closeAnimation = (t, w) => {
     leftEye.close.animation("#leftEye", t, w)
     rightEye.close.animation("#rightEye",t, w)
+    gsap.to(`#leftEyeClipValue`, {
+            duration: t,
+            attr: {d: `${
+                calculateClipValue.eye(leftEye.close)
+            }`},
+            delay: w
+        });
 };
 
 const blinkAnimation = () => {
@@ -275,6 +295,13 @@ const disgustAnimation = (t, w) => {
     rightEye.disgust.animation("#rightEye", t, w)
     mouthStates.straight.animation("#upperLip", t, w)
     mouthStates.straight.animation("#lowerLip", t, w)
+    gsap.to(`#leftEyeClipValue`, {
+            duration: t,
+            attr: {d: `${
+                calculateClipValue.eye(leftEye.disgust)
+            }`},
+            delay: w
+        });
 };
 
 const angryAnimation = (t, w) => {
@@ -282,6 +309,13 @@ const angryAnimation = (t, w) => {
     rightEye.angry.animation("#rightEye", t, w)
     mouthStates.frown.animation("#upperLip", t, w)
     mouthStates.frown.animation("#lowerLip", t, w)
+    gsap.to(`#leftEyeClipValue`, {
+            duration: t,
+            attr: {d: `${
+                calculateClipValue.eye(leftEye.angry)
+            }`},
+            delay: w
+        });
 };
 
 const smugAnimation = (t, w) => {
@@ -289,6 +323,13 @@ const smugAnimation = (t, w) => {
     rightEye.smug.animation("#rightEye", t, w)
     mouthStates.smile.animation("#upperLip", t, w)
     mouthStates.smile.animation("#lowerLip", t, w)
+    gsap.to(`#leftEyeClipValue`, {
+            duration: t,
+            attr: {d: `${
+                calculateClipValue.eye(leftEye.smug)
+            }`},
+            delay: w
+        });
 };
 
 const stunnedAnimation = (t, w) => {
@@ -296,6 +337,13 @@ const stunnedAnimation = (t, w) => {
     rightEye.wideEye.animation("#rightEye", t, w)
     mouthStates.smallMouth.animation("#upperLip", t, w)
     mouthStates.smallMouth.animation("#lowerLip", t, w)
+    gsap.to(`#leftEyeClipValue`, {
+            duration: t,
+            attr: {d: `${
+                calculateClipValue.eye(leftEye.wideEye)
+            }`},
+            delay: w
+        });
 };
 
 const slyAmusementAnimation = (t, w) => {
@@ -303,6 +351,13 @@ const slyAmusementAnimation = (t, w) => {
     rightEye.slyAmusement.animation("#rightEye", t, w)
     mouthStates.smile.animation("#upperLip", t, w)
     mouthStates.smile.animation("#lowerLip", t, w)
+    gsap.to(`#leftEyeClipValue`, {
+            duration: t,
+            attr: {d: `${
+                calculateClipValue.eye(leftEye.slyAmusement)
+            }`},
+            delay: w
+        });
 };
 
 const grinAnimation = (t, w) => {
@@ -313,6 +368,13 @@ const grinAnimation = (t, w) => {
     gsap.to(`#mouthClipValue`, {
             duration: t,
             attr: {d: "M 45 225 C 115 280 180 240 225 240 C 270 240 335 280 405 225 L 405 225 C 330 280 350 315 225 315 C 100 315 120 280 45 225"},
+            delay: w
+        });
+    gsap.to(`#leftEyeClipValue`, {
+            duration: t,
+            attr: {d: `${
+                calculateClipValue.eye(leftEye.closedHappy)
+            }`},
             delay: w
         });
 };
@@ -341,7 +403,7 @@ function startAnimation() {
         x = 0
     }
     console.log(emotions[x])
-    emotions[x](0.3, 0)
+    emotions[x](0.4, 0)
     currentState = emotions[x]
     x += 1
 };
@@ -402,20 +464,9 @@ $(document).ready(function () {
     };
 
     console.log(calculateClipValue.mouth(upperLip.bigSmile.lip, underLip.bigSmile.lip));
-
-    function reverseCubicPath(path) {
-    // Plukk ut alle tall (tillater desimaler og minus)
-    const nums = path.match(/-?\d*\.?\d+/g).map(Number);
-    if (!nums || nums.length !== 8) {
-        throw new Error("Forventet format: M x0 y0 C x1 y1 x2 y2 x3 y3");
-    }
-    const [x0,y0, x1,y1, x2,y2, x3,y3] = nums;
-    // Reversert: start i endepunktet, bytt rekkefølgen på kontrollpunktene
-    return `M ${x3} ${y3} C ${x2} ${y2} ${x1} ${y1} ${x0} ${y0}`;
-    }
-
-    // Eksempel
-    const input = "M 270 195 C 279 171 300 150 330 150";
-    const output = reverseCubicPath(input);
-    console.log(output); 
+    
+    let test = leftEye.closedHappy
+    console.log(test)
+    console.log(calculateClipValue.eye(test
+    ));
 });
