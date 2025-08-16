@@ -378,7 +378,7 @@ function startAnimation() {
         x = 0
     }
     console.log(emotions[x])
-    emotions[x](3.4, 0)
+    emotions[x](0.4, 0)
     currentState = emotions[x]
     x += 1
 };
