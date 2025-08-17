@@ -251,14 +251,6 @@ const rightEye = {
     )
 };
 
-const mouthStatesOld = {
-    uSmile: new Mouth("M 210 330 C 210 350 240 350 240 330"),
-    straight: new Mouth("M 210 345 C 225 345 225 345 240 345"),
-    smile: new Mouth("M 150 300 C 195 330 255 330 300 300"), 
-    frown: new Mouth("M 210 345 C 210 325 240 325 240 345"),
-    smallMouth: new Mouth("M 220 345 C 225 345 225 345 230 345")
-};
-
 const mouthStates = {
     bigSmile: new Mouth(
         `M 45 225 C 115 280 180 240 225 240 C 270 240 335 280 405 225 
