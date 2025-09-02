@@ -1,7 +1,6 @@
-// Filnavn: app.js
-
-// Importer innebygde HTTP-modulen
 const http = require('http');
+const hostname = '127.0.0.1';
+const port = 3000;
 
 // Lag en enkel server
 const server = http.createServer((req, res) => {
@@ -11,6 +10,6 @@ const server = http.createServer((req, res) => {
 });
 
 // Start serveren på port 3000
-server.listen(5501, () => {
-  console.log('Server kjører på http://localhost:5501');
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
