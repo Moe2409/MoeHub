@@ -25,6 +25,8 @@ button {
     background-color: var(--backgroundColor);
     fill: transparent;
     margin: 0 10%;
+    height: 15vh;
+    width: 15vh;
 }
 
 #leftEye, #rightEye, #mouth {
@@ -45,11 +47,13 @@ main {
 }
 
 main section {
-    flex: 50%;
+    flex: 100%;
 }
 
 #user-in-out {
     background-color: red;
+    order: 2;
+    height: 35%;
 }
 
 #user-output {
@@ -65,14 +69,16 @@ main section {
 #sucrose {
     background-color: yellow;
     color: black;
+    height: 15%;
 }
 
 #sucrose-output {
     background-color: blue;
+    height: 40%;
 }
 
 #menu nav {
-    display: block;
+    display: none;
     background-color: black;
     height: 100%; 
     width: 100%;
@@ -95,6 +101,8 @@ main section {
 
 #menu {
     background-color: orange;
+    height: 10%;
+    order: -1;
 }
 
 #menu-icon {
@@ -106,7 +114,7 @@ main section {
 }
 
 #menu-icon-container {
-    display: none;
+    display: block;
     cursor: pointer;
     height: 5vh;
     width: 5vh;
@@ -145,33 +153,7 @@ main section {
 }
 
 @media screen and (max-width: 1000px) {
-    main section {
-        flex: 100%;
-    }
-    #user-in-out {
-        order: 2;
-        height: 35%;
-    } 
-    #sucrose {
-        height: 15%;
-    }
-    #sucrose-output {
-        height: 40%;
-    }
-    #menu {
-        height: 10%;
-        order: -1;
-    }
-    #menu-icon-container {
-        display: block;
-    }
-    #menu nav {
-        display: none;
-    }
-    #cube {
-        height: 15vh;
-        width: 15vh;
-    }
+    
 }
 
 .horisontal-line, .vertical-line {
