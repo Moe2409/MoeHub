@@ -15,9 +15,7 @@ body {
 }
 
 button {
-    top: 70vh;
-    position: relative;
-    z-index: 1;
+    
 }
 
 #cube {
