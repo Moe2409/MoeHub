@@ -24,7 +24,6 @@ button {
     position: relative;
     background-color: var(--backgroundColor);
     fill: transparent;
-    margin: 0 10%;
     height: 15vh;
     width: 15vh;
 }
