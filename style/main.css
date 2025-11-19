@@ -15,7 +15,7 @@ body {
 }
 
 button {
-    
+    height: 20px;
 }
 
 #cube {
@@ -47,22 +47,6 @@ main section {
     flex: 100%;
 }
 
-#user-in-out {
-    background-color: red;
-    order: 2;
-    height: 35%;
-}
-
-#user-output {
-    background-color: rgb(134, 2, 134);
-    height: 60%;
-}
-
-#user-input {
-    background-color: purple;
-    height: 15%;
-}
-
 #sucrose {
     background-color: yellow;
     color: black;
@@ -72,11 +56,6 @@ main section {
 
 #sucrose p {
     flex: 1;
-}
-
-#sucrose-output {
-    background-color: blue;
-    height: 40%;
 }
 
 #menu nav {
