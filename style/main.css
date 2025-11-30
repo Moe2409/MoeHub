@@ -19,11 +19,11 @@ button {
 }
 
 #cube {
-    position: relative;
     background-color: var(--backgroundColor);
     fill: transparent;
-    height: 15vh;
-    width: 15vh;
+    min-width: 18vh;
+    border-left: 1px solid yellow;
+    margin-left: auto;
 }
 
 #leftEye, #rightEye, #mouth {
@@ -40,7 +40,9 @@ button {
 main {
     display: flex;
     flex-wrap: wrap;
-    height: 100dvh;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
 }
 
 main section {
@@ -48,14 +50,19 @@ main section {
 }
 
 #sucrose {
-    background-color: yellow;
-    color: black;
-    height: 15%;
+    border: 1px solid yellow;
+    color: yellow;
+    height: 18vh;
     display: flex;
+    flex: 0 1 100%;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 #sucrose p {
-    flex: 1;
+    margin: 0;
+    padding: 10px;
 }
 
 #menu nav {
@@ -133,8 +140,11 @@ main section {
     fill: var(--color);
 }
 
-@media screen and (max-width: 1000px) {
-    
+@media screen and (min-width: 1000px) {
+    #sucrose {
+        margin-left: 25vw;
+        margin-right: 25vw;
+    }
 }
 
 .horisontal-line, .vertical-line {
