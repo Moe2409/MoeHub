@@ -19,6 +19,7 @@ button {
 }
 
 #cube {
+    position: relative;
     background-color: var(--backgroundColor);
     fill: transparent;
     min-width: 18vh;
