@@ -11,7 +11,7 @@ html, body {
 body {
     background-color: var(--backgroundColor);
     color: var(--color);
-    font-family: sans-serif;
+    font-family: "Lucida Console", monospace;
 }
 
 button {
