@@ -84,9 +84,14 @@
                 </svg>
             </div>
         </section>
-        <button onclick="startAnimation()">Change</button>
-        <button onclick="blinkAnimation()">Blink</button>
-        <button onclick="showGrid()">Grid</button>
+        <section id="controls">
+            <button onclick="startAnimation()">Change</button>
+            <button onclick="blinkAnimation()">Blink</button>
+            <button onclick="showGrid()">Grid</button>
+        </section>
+        <section id="input-area-container" >
+            <input id="input-area" type="text">
+        </section>
         <section id="menu">
             <input id="menu-icon" type="checkbox" onclick="menuPressed()">
             <label for="menu-icon" id="menu-icon-container">

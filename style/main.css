@@ -40,8 +40,7 @@ button {
 main {
     display: flex;
     flex-wrap: wrap;
-    height: 100%;
-    width: 100%;
+    min-height: 100vh;
     justify-content: center;
 }
 
@@ -90,7 +89,6 @@ main section {
 }
 
 #menu {
-    background-color: orange;
     height: 10%;
     order: -1;
 }
