@@ -68,7 +68,7 @@ main section {
 
 #menu nav {
     display: none;
-    background-color: black;
+    background-color: var(--backgroundColor);
     height: 100%; 
     width: 100%;
     position: fixed;
