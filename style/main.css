@@ -22,7 +22,7 @@ button {
     background-color: var(--backgroundColor);
     fill: transparent;
     min-width: 18vh;
-    border-left: 1px solid yellow;
+    border-left: 1px solid var(--color);
 }
 
 #leftEye, #rightEye, #mouth {
@@ -48,8 +48,8 @@ main section {
 }
 
 #sucrose {
-    border: 1px solid yellow;
-    color: yellow;
+    border: 1px solid var(--color);
+    color: var(--color);
     height: 18vh;
     display: flex;
     flex: 0 1 100%;
@@ -85,6 +85,7 @@ main section {
     margin: auto;
     top: 15%;
     position: relative;
+    fill: var(--backgroundColor);
 }
 
 #menu {
