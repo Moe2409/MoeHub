@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style/main.css">
     <link rel="icon" href="pictures/LEON Logo.svg">
     <link rel="stylesheet" href="style/theme.css">
+    <link rel="stylesheet" href="style/to-do-list.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" defer></script>
@@ -37,14 +38,13 @@
                 </svg>
             </nav>
         </section>
-        <section id=""> <!-- Add Project -->
-
+        <section id="add-project">
         </section>
-        <section>
-            <input id="project1" type="checkbox">
-            <label for="project1">
-                <h1>To Do List</h1>
-            </label>
+        <section id="projectContainer">
+            <article id="project1" class="project" onclick="expandProject(this)">
+               <h2>To Do List</h2>
+               <div class="progressBar"></div>
+            </article>
         </section>
     </main>
 </body>

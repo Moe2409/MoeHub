@@ -1,0 +1,11 @@
+.project {
+    border: 0.2rem solid yellow;
+    border-radius: 5px;
+    margin: 2rem;
+    cursor: pointer;
+}
+
+.progressBar {
+    border: 0.1rem solid yellow;
+    margin: 1rem;
+}
