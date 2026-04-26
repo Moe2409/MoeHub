@@ -1,11 +1,32 @@
+main {
+    min-height: 0;
+}
+
+#addProject {
+    margin-top: 2rem;
+}
+
 .project {
     border: 0.2rem solid yellow;
-    border-radius: 5px;
+    border-radius: 0.3rem;
     margin: 2rem;
     cursor: pointer;
 }
-
-.progressBar {
-    border: 0.1rem solid yellow;
+.project h2 {
     margin: 1rem;
 }
+
+.progressBar {
+    background-color: gray;
+    height: 0.3rem;
+    margin: 1rem;
+    border-radius: 0.2rem;
+}
+
+#progress1 {
+    background-color: yellow;
+    height: 0.3rem;
+    border-radius: 0.2rem;
+    width: 20%;
+}
+

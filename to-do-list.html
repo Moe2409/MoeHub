@@ -38,13 +38,30 @@
                 </svg>
             </nav>
         </section>
-        <section id="add-project">
-        </section>
         <section id="projectContainer">
             <article id="project1" class="project" onclick="expandProject(this)">
-               <h2>To Do List</h2>
-               <div class="progressBar"></div>
+                <h2>To Do List</h2>
+                <div class="progressBar">
+                    <div id="progress1"></div>
+                </div>
+                <ul>
+                    <li>
+                        <input type="checkbox">
+                        <p>Finishing layout</p>
+                    </li>
+                    <li></li>
+                </ul>
             </article>
+            <article id="project2" class="project" onclick="expandProject(this)">
+                <h2>Electric-Skateboard</h2>
+                <div class="progressBar">
+                    <div id="progress2"></div>
+                </div>
+            </article>
+        </section>
+        <section id="addProject">
+            <input type="text">
+            <input type="button">
         </section>
     </main>
 </body>
