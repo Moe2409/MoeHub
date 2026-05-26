@@ -39,14 +39,31 @@
             </nav>
         </section>
         <section id="projectContainer">
-            <article id="project1" class="project" onclick="expandProject(this)">
+            <article id="project1" class="project" onclick="expandProject(this)" role="button">
                 <h2>To Do List</h2>
-                <div class="progressBar">
-                    <div id="progress1"></div>
+                <div id="">
+                    <div class="progressBar">
+                        <div id="progress1"></div>
+                    </div>
+                    <span>20%</span>
                 </div>
-                <div id="notePad" contenteditable="true">
+                <div class="priorityTasks">
+                    <div class="taskRow">
+                        <input id="task1" type="checkbox">
+                        <label for="task1">Finishing a task layout</label>
+                    </div>
+                    <div class="taskRow">
+                        <input id="task2" type="checkbox">
+                        <label for="task2">Finishing to-do-list</label>
+                    </div>
+                    <div class="taskRow">
+                        <input id="task3" type="checkbox">
+                        <label for="task3">Make a server</label>
+                    </div>
+                </div>
+                <!--<div id="notePad" contenteditable="true">
                     Skriv her...
-                </div>
+                </div>-->
             </article>
             <article id="project2" class="project" onclick="expandProject(this)">
                 <h2>Electric-Skateboard</h2>

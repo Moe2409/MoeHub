@@ -21,6 +21,7 @@ main {
     height: 0.3rem;
     margin: 1rem;
     border-radius: 0.2rem;
+    display: flex;
 }
 
 #progress1 {
@@ -28,5 +29,13 @@ main {
     height: 0.3rem;
     border-radius: 0.2rem;
     width: 20%;
+}
+
+.priorityTasks {
+
+}
+
+.taskRow {
+    margin: 1rem;
 }
 
