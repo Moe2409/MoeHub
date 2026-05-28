@@ -41,7 +41,7 @@
         <section id="projectContainer">
             <article id="project1" class="project" onclick="expandProject(this)" role="button">
                 <h2>To Do List</h2>
-                <div id="">
+                <div class="progressContainer">
                     <div class="progressBar">
                         <div id="progress1"></div>
                     </div>
@@ -52,14 +52,6 @@
                         <input id="task1" type="checkbox">
                         <label for="task1">Finishing a task layout</label>
                     </div>
-                    <div class="taskRow">
-                        <input id="task2" type="checkbox">
-                        <label for="task2">Finishing to-do-list</label>
-                    </div>
-                    <div class="taskRow">
-                        <input id="task3" type="checkbox">
-                        <label for="task3">Make a server</label>
-                    </div>
                 </div>
                 <!--<div id="notePad" contenteditable="true">
                     Skriv her...
@@ -67,8 +59,10 @@
             </article>
             <article id="project2" class="project" onclick="expandProject(this)">
                 <h2>Electric-Skateboard</h2>
-                <div class="progressBar">
-                    <div id="progress2"></div>
+                <div class="progress-container">
+                    <span>50%</span>
+                    <progress id="progressBar2" value="50" max="100"></progress>
+                </div>
                 </div>
             </article>
         </section>

@@ -19,9 +19,15 @@ main {
 .progressBar {
     background-color: gray;
     height: 0.3rem;
-    margin: 1rem;
+    margin: 0 1rem 0 0;
     border-radius: 0.2rem;
     display: flex;
+    width: 100%;
+    order: 2;
+}
+
+.progressContainer span {
+    margin: 0 1rem;
 }
 
 #progress1 {
@@ -31,8 +37,9 @@ main {
     width: 20%;
 }
 
-.priorityTasks {
-
+.progressContainer {
+    display: flex;
+    align-items: center;
 }
 
 .taskRow {
