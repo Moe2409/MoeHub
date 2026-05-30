@@ -7,23 +7,23 @@ main {
 }
 
 .project {
-    border: 0.2rem solid yellow;
+    border: 0.15rem solid yellow;
     border-radius: 0.3rem;
     margin: 2rem;
     cursor: pointer;
 }
 .project h2 {
     margin: 1rem;
+    font-size: 1rem;
 }
 
 .progressBar {
     background-color: gray;
     height: 0.3rem;
-    margin: 0 1rem 0 0;
+    margin: 0 0 0 1rem;
     border-radius: 0.2rem;
     display: flex;
     width: 100%;
-    order: 2;
 }
 
 .progressContainer span {
