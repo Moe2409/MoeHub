@@ -1,0 +1,40 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "To-Do-List",
+      "description": "Lage ny landingsside og kontaktskjema",
+      "tasks": [
+        {
+          "id": "t1",
+          "title": "Design mockup",
+          "status": "completed"
+        },
+        {
+          "id": "t2",
+          "title": "Utvikle frontend",
+          "status": "in_progress",
+          "priority": 1
+        },
+        {
+          "id": "t3",
+          "title": "Sette opp database",
+          "status": "backlog",
+          "priority": 2
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Intern IT-oppgradering",
+      "description": "Bytte ut gamle rutere",
+      "tasks": [
+        {
+          "id": "t4",
+          "title": "Kjøpe inn utstyr",
+          "status": "todo"
+        }
+      ]
+    }
+  ]
+}
