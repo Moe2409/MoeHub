@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" defer></script>
     <script src="script/colorTheme.js" defer></script>
     <script src="script/menu.js" defer></script>
+    <script src="script/to-do-list.js" defer></script>
 </head>
 <body>
     <main>
@@ -40,38 +41,34 @@
         </section>
         <section id="projectContainer">
             <article id="project1" class="project" onclick="expandProject(this)" role="button">
-                <h2>To Do List</h2>
-                <p>Description:</p>
-                <p>Finish designing and coding the to-do-list.html, so I can start something else</p>
+                <h2 class="projectTitle">To Do List</h2>
                 <div class="progressContainer">
                     <div class="progressBar">
-                        <div id="progress1"></div>
+                        <div class="progressFill"></div>
                     </div>
-                    <span>20%</span>
+                    <span class="progressText">20%</span>
                 </div>
-                <div class="priorityTasks">
-                    <p style="margin-left: 1rem;">Next Task:</p>
-                    <div class="taskRow">
-                        <input id="task1" type="checkbox">
-                        <label for="task1">Finishing a task layout</label>
-                    </div>
+                <h3 class="nextTaskHeader">Next Task:</h3>
+                <div class="nextTaskContainer">
+                    <input id="t1" type="checkbox">
+                    <label class="nextTaskLabel" for="t1">Finishing a task layout</label>
                 </div>
                 <!--<div id="notePad" contenteditable="true">
                     Skriv her...
                 </div>-->
             </article>
-            <article id="project2" class="project" onclick="expandProject(this)">
-                <h2>Electric-Skateboard</h2>
+            <article id="project2" class="project" onclick="expandProject(this)" role="button">
+                <h2 class="projectTitle">Electric-Skateboard</h2>
                 <div class="progressContainer">
-                    <div style="margin-left: 1rem;">[||||||||||..........]</div>
-                    <span>50%</span>
-                </div>
-                <div class="priorityTasks">
-                    <p style="margin-left: 1rem;">Next Task:</p>
-                    <div class="taskRow">
-                        <input id="task2" type="checkbox">
-                        <label for="task2">Finishing a task layout</label>
+                    <div class="progressBar">
+                        <div class="progressFill"></div>
                     </div>
+                    <span class="progressText">20%</span>
+                </div>
+                <h3 class="nextTaskHeader">Next Task:</h3>
+                <div class="nextTaskContainer">
+                    <input id="t2" type="checkbox">
+                    <label class="nextTaskLabel" for="t1">Buy Parts</label>
                 </div>
             </article>
         </section>

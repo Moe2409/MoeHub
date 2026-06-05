@@ -12,9 +12,9 @@ main {
     margin: 2rem;
     cursor: pointer;
 }
-.project h2 {
+.projectTitle {
     margin: 1rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .progressBar {
@@ -26,15 +26,14 @@ main {
     width: 100%;
 }
 
-.progressContainer span {
-    margin: 0 1rem;
-}
-
-#progress1 {
+.progressFill {
     background-color: yellow;
     height: 0.3rem;
     border-radius: 0.2rem;
-    width: 20%;
+}
+
+.progressText {
+    margin: 0 1rem;
 }
 
 .progressContainer {
@@ -42,7 +41,18 @@ main {
     align-items: center;
 }
 
-.taskRow {
+.nextTaskContainer {
     margin: 1rem;
+    margin-top: 0.6rem;
 }
 
+.nextTaskHeader {
+    font-size: 1.1rem;
+    font-weight: normal;
+    margin-bottom: 0;
+    margin-left: 1rem;
+}
+
+.nextTaskLabel {
+    font-size: 1rem;
+}
