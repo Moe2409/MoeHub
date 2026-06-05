@@ -2,12 +2,27 @@
   "projects": [
     {
       "id": 1,
-      "name": "To-Do-List",
+      "name": "To Do List",
       "tasks": [
         {
           "id": "t1",
-          "title": "Design mockup",
+          "title": "Design Layout",
           "status": "completed"
+        },
+        {
+          "id": "t2",
+          "title": "Finish ProjectContainer",
+          "status": "incomplete"
+        },
+        {
+          "id": "t3",
+          "title": "Design TaskContainer Layout",
+          "status": "incomplete"
+        },
+        {
+          "id": "t4",
+          "title": "Finish TaskContainer",
+          "status": "incomplete"
         }
       ]
     },
@@ -16,9 +31,9 @@
       "name": "Intern IT-oppgradering",
       "tasks": [
         {
-          "id": "t2",
+          "id": "t5",
           "title": "Kjøpe inn utstyr",
-          "status": "todo"
+          "status": "incomplete"
         }
       ]
     }
