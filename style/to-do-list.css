@@ -44,6 +44,8 @@ main {
 .nextTaskContainer {
     margin: 1rem;
     margin-top: 0.6rem;
+    display: flex;
+    align-items: center;
 }
 
 .nextTaskHeader {
@@ -55,4 +57,34 @@ main {
 
 .nextTaskLabel {
     font-size: 1rem;
+}
+
+.nextTaskContainer input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+
+    margin: 0;
+    margin-right: 0.5rem;
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border: 2px solid yellow;
+    border-radius: 2px;
+    cursor: pointer;
+
+    position: relative;
+    display: inline-block;
+}
+
+.nextTaskContainer input[type="checkbox"]:checked::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid yellow;
+    border-width: 0 3px 3px 0;
+
+    transform: rotate(45deg);
 }
