@@ -83,8 +83,18 @@ main {
     top: 0px;
     width: 5px;
     height: 10px;
-    border: solid yellow;
+    border: solid rgb(141, 141, 0);
     border-width: 0 3px 3px 0;
 
     transform: rotate(45deg);
 }
+
+.nextTaskContainer input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+    color: rgb(141, 141, 0);
+}
+
+.nextTaskContainer input[type="checkbox"]:checked {
+    border: 2px solid rgb(141, 141, 0);
+}
+
