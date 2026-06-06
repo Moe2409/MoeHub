@@ -79,7 +79,7 @@ main {
 .nextTaskContainer input[type="checkbox"]:checked::before {
     content: '';
     position: absolute;
-    left: 5px;
+    left: 4px; /*was 5px*/
     top: 0px;
     width: 5px;
     height: 10px;
