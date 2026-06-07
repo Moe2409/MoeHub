@@ -65,11 +65,11 @@ main {
 
     margin: 0;
     margin-right: 0.5rem;
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
     background-color: black;
-    border: 2px solid yellow;
-    border-radius: 2px;
+    border: 0.15rem solid yellow;
+    border-radius: 0.12rem;
     cursor: pointer;
 
     position: relative;
@@ -79,12 +79,12 @@ main {
 .nextTaskContainer input[type="checkbox"]:checked::before {
     content: '';
     position: absolute;
-    left: 4px; /*was 5px*/
+    left: 0.22rem; 
     top: 0px;
-    width: 5px;
-    height: 10px;
+    width: 0.3rem;
+    height: 0.6rem;
     border: solid rgb(141, 141, 0);
-    border-width: 0 3px 3px 0;
+    border-width: 0 0.2rem 0.2rem 0;
 
     transform: rotate(45deg);
 }
@@ -95,6 +95,6 @@ main {
 }
 
 .nextTaskContainer input[type="checkbox"]:checked {
-    border: 2px solid rgb(141, 141, 0);
+    border: 0.15rem solid rgb(141, 141, 0);
 }
 
