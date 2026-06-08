@@ -10,6 +10,17 @@ $(document).ready(function () {
             const nextTask = project.tasks.find(t => t.status !== "completed") || {id : "none", title: "No More Tasks", status: "completed"};
             const isChecked = nextTask.status === "completed" ? "checked" : "";
 
+            const allTasksHTML = project.tasks.map(function(task) {
+                const taskChecked = task.status === "completed" ? "checked" : "";
+
+                return `
+                    <div class="taskRow">
+                        <input id="${task.id}" class="taskCheckbox" type="checkbox" ${taskChecked}>
+                        <label class="taskLabel" for="${task.id}">${task.title}</label>
+                    </div>
+                `
+            });
+
             const projectHTML =  `
                 <article id="project${project.id}" class="project">
                     <h2 class="projectTitle">${project.name}</h2>
@@ -26,11 +37,23 @@ $(document).ready(function () {
                         <input id="${nextTask.id}" type="checkbox" ${isChecked}>
                         <label class="nextTaskLabel" for="${nextTask.id}">${nextTask.title}</label>
                     </div>
+
+                    <div class="tasksContainer contenteditable="true"">
+                        <h4>All Tasks:</h4>
+                        ${allTasksHTML}
+                    </div>
                 </article>
             `;
             $("#projectsContainer").append(projectHTML);
         });
     }).fail(function() {
         console.log("Failed to load json file")
+    });
+
+    $("#projectsContainer").on("click", ".project", function() {
+        $(this).find(".tasksContainer").slideToggle();
+    });
+    $("#projectsContainer").on("click", ".nextTaskContainer input", function(event) {
+        
     });
 });
