@@ -47,7 +47,7 @@ main section {
     flex: 100%;
 }
 
-#sucrose {
+#nixy {
     border: 1px solid var(--color);
     color: var(--color);
     height: 18vh;
@@ -58,7 +58,7 @@ main section {
     margin-right: 10px;
 }
 
-#sucrose p {
+#nixy p {
     font-size: large;
     margin: auto;
     padding: 10px;
@@ -142,7 +142,7 @@ main section {
 }
 
 @media screen and (min-width: 1000px) {
-    #sucrose {
+    #nixy {
         margin-left: 25vw;
         margin-right: 25vw;
     }

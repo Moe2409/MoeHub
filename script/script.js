@@ -10,5 +10,5 @@ const dailyComments = [
 
 $(document).ready(function () {
     const random = Math.floor(Math.random() * dailyComments.length);
-    $("#sucroseWriting").text(dailyComments[random]);
+    $("#nixyWriting").text(dailyComments[random]);
 });
