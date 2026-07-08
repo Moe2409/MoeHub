@@ -93,3 +93,36 @@ input[type="checkbox"]:checked {
     border: 0.15rem solid rgb(141, 141, 0);
 }
 
+.kanban {
+    border-top: 0.05rem solid rgb(161, 162, 163);
+}
+
+.toDo .epic {
+    background-color: rgb(42, 0, 210);
+}
+
+.waiting .epic {
+    background-color: rgb(231, 122, 33);
+}
+
+.inProgress .epic {
+    background-color: rgb(177, 38, 228);
+}
+
+.finished .epic {
+    background-color: rgb(0, 164, 0);
+}
+
+.epic {
+    display: flex;
+    border: 0.1rem solid black;
+    border-radius: 0.5rem;
+    margin: 0.2rem;
+    padding: 0.5rem;
+    align-items: center;
+    gap: 1rem;
+}
+
+.epic h3 {
+    margin: 0;
+}

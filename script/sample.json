@@ -1,17 +1,6 @@
 {
   "projects": [
     {
-      "id": 1,
-      "name": "To-Do-Morrow",
-      "tasks": [
-        {
-          "id": "t6",
-          "title": "Go For A Jog",
-          "status": "incomplete"
-        }
-      ]
-    },
-    {
       "id": 2,
       "name": "To Do List",
       "tasks": [
@@ -33,17 +22,6 @@
         {
           "id": "t4",
           "title": "Finish TaskContainer",
-          "status": "incomplete"
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "name": "Intern IT-oppgradering",
-      "tasks": [
-        {
-          "id": "t5",
-          "title": "Kjøpe inn utstyr",
           "status": "incomplete"
         }
       ]
