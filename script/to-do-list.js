@@ -1,11 +1,16 @@
 $(document).ready(function () {
     $.getJSON("./script/sample.json", function(data) {
+
+        const calculateProgressPercent = function(length, completed) {
+            return length > 0 ? Math.round((completed/length)*100) : 0;
+        };
+
         $("#projectsContainer").empty();
         data.projects.forEach(function (project) {
             const totalTasks = project.tasks.length;
             const completedTasks = project.tasks.filter(t => t.status === "completed").length;
 
-            const progressPercent = totalTasks > 0 ? Math.round((completedTasks/totalTasks)*100) : 0;
+            const progressPercent = calculateProgressPercent(totalTasks, completedTasks)
 
             const allTasksHTML = project.tasks.map(function(task) {
                 const taskChecked = task.status === "completed" ? "checked" : "";
@@ -40,10 +45,27 @@ $(document).ready(function () {
         console.log("Failed to load json file")
     });
 
-    $("#projectsContainer").on("click", ".project", function() {
+    $("#projectsContainer").on("click", ".project", function(event) {
+        if ($(event.target).closest(".taskRow").length) {
+            return;
+        }
         $(this).find(".tasksContainer").slideToggle();
     });
-    $("#projectsContainer").on("click", ".taskCheckbox, .taskLabel", function(event) {
+
+    $("#projectsContainer").on("click", ".taskRow", function(event) {
         event.stopPropagation();
+
+        const $checkbox = $(this).find(".taskCheckbox");
+        const $progress = $(this).find(".progressFill")
+
+        if (!$(event.target).is(".taskCheckbox")) {
+            if (!$(event.target).is(".taskLabel")) {
+                $checkbox.prop("checked", !$checkbox.prop("checked"));
+            }
+        }
+        if ($checkbox.is(":checked")) {
+            console.log("Checked task ID:", $checkbox.attr("id"));
+            
+        }
     });
 });
