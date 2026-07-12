@@ -35,58 +35,19 @@ $(document).ready(function () {
                     </div>
 
                     <div class="kanban">
-                        <div class="toDo">
-                            <div class="epic">
-                                <h3>To Do</h3>
-                                <div class="dropDownIcon">
-                                    ^
-                                </div>
-                            </div>
-                            <ul class="tasks">
-                                <li class="task">Make A Layout</li>
-                                <li class="task">Finish Design</li>
-                            </ul>
+                        <div class="epics">
+                            <button class="epic toDo">To Do</button>
+                            <button class="epic waiting">Waiting</button>
+                            <button class="epic inProgress">In Progress</button>
+                            <button class="epic finished">Finished</button>
                         </div>
-
-                        <div class="waiting">
-                            <div class="epic">
-                                <h3>Waiting</h3>
-                                <div class="dropDownIcon">
-                                    ^
-                                </div>
-                            </div>
-                            <ul class="tasks">
-                                <li class="task">Make A Layout</li>
-                                <li class="task">Finish Design</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="inProgress">
-                            <div class="epic">
-                                <h3>In Progress</h3>
-                                <div class="dropDownIcon">
-                                    ^
-                                </div>
-                            </div>
-                            <ul class="tasks">
-                                <li class="task">Make A Layout</li>
-                                <li class="task">Finish Design</li>
-                            </ul>
-                        </div>
-
-                        <div class="finished">
-                            <div class="epic">
-                                <h3>Finished</h3>
-                                <div class="dropDownIcon">
-                                    ^
-                                </div>
-                            </div>
-                            <ul class="tasks">
-                                <li class="task">Make A Layout</li>
-                                <li class="task">Finish Design</li>
-                            </ul>
-                        </div>
-                   </div>
+                        <ul class="tasksContainer">
+                            <li>Full Kanban Design</li>
+                            <li>Add Functions</li>
+                            <li>Complete Code</li>
+                            <li>Database</li>
+                        </ul>
+                    </div>
                 </article>
             `;
             $("#projectsContainer").append(projectHTML);
