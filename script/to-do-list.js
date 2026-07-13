@@ -5,6 +5,29 @@ $(document).ready(function () {
             return length > 0 ? Math.round((completed/length)*100) : 0;
         };
 
+        const getTasks = function(project, status) {
+            return project.tasks.filter(task => task.status === status);
+        };
+
+        const addTasksToContainer = function($container, tasks) {
+            $container.empty();
+            
+            if (tasks.length === 0) {
+                $container.append('<li class="no-tasks">Ingen oppgaver i denne kolonnen</li>');
+                return;
+            }
+
+            tasks.forEach(task => {
+                $container.append(`
+                    <li class="taskRow" data-id="${task.id}">
+                        ${task.title}
+                    </li>
+                `);
+            });
+        };
+
+        $("#projectsContainer").empty();
+
         $("#projectsContainer").empty();
         data.projects.forEach(function (project) {
             const totalTasks = project.tasks.length;
@@ -12,19 +35,8 @@ $(document).ready(function () {
 
             const progressPercent = calculateProgressPercent(totalTasks, completedTasks)
 
-            const allTasksHTML = project.tasks.map(function(task) {
-                const taskChecked = task.status === "completed" ? "checked" : "";
-
-                return `
-                    <div class="taskRow">
-                        <input id="${task.id}" class="taskCheckbox" type="checkbox" ${taskChecked}>
-                        <label class="taskLabel" for="${task.id}">${task.title}</label>
-                    </div>
-                `
-            });
-
             const projectHTML =  `
-                <article id="project${project.id}" class="project">
+                <article id="project${project.id}" data-project-id="${project.id}"" class="project">
                     <h2 class="projectTitle">${project.name}</h2>
                     
                     <div class="progressContainer">
@@ -34,49 +46,47 @@ $(document).ready(function () {
                         <span class="progressText">${progressPercent}%</span>
                     </div>
 
-                    <div class="kanban">
-                        <div class="epics">
-                            <button class="epic toDo">To Do</button>
-                            <button class="epic waiting">Waiting</button>
-                            <button class="epic inProgress">In Progress</button>
-                            <button class="epic finished">Finished</button>
+                    <div class="kanbanBoard">
+                        <div class="columns">
+                            <button class="column toDo" data-status="toDo">To Do</button>
+                            <button class="column waiting" data-status="waiting">Waiting</button>
+                            <button class="column inProgress" data-status="inProgress">In Progress</button>
+                            <button class="column finished" data-status="finished">Finished</button>
                         </div>
                         <ul class="tasksContainer">
-                            <li>Full Kanban Design</li>
-                            <li>Add Functions</li>
-                            <li>Complete Code</li>
-                            <li>Database</li>
                         </ul>
                     </div>
                 </article>
             `;
-            $("#projectsContainer").append(projectHTML);
+            const $projectElement = $(projectHTML);
+            $("#projectsContainer").append($projectElement);
+
+            const defaultTasks = getTasks(project, "toDo");
+            addTasksToContainer($projectElement.find(".tasksContainer"), defaultTasks);
+
+            $("#projectsContainer").on("click", ".column", function(event) {
+                event.stopPropagation(); 
+
+                const status = $(this).data("status"); 
+                const projectId = $(this).closest(".project").data("project-id");
+
+                const prosjekt = data.projects.find(p => p.id === projectId);
+
+                if (prosjekt) {
+                    const oppgaver = prosjekt.tasks.filter(t => t.status === status);
+                    const $container = $(this).closest(".project").find(".tasksContainer");
+                    addTasksToContainer($container, oppgaver);
+                }
+            });
         });
     }).fail(function() {
         console.log("Failed to load json file")
     });
 
     $("#projectsContainer").on("click", ".project", function(event) {
-        if ($(event.target).closest(".taskRow").length) {
+        if ($(event.target).closest(".taskRow, .column").length) {
             return;
         }
         $(this).find(".tasksContainer").slideToggle();
-    });
-
-    $("#projectsContainer").on("click", ".taskRow", function(event) {
-        event.stopPropagation();
-
-        const $checkbox = $(this).find(".taskCheckbox");
-        const $progress = $(this).find(".progressFill")
-
-        if (!$(event.target).is(".taskCheckbox")) {
-            if (!$(event.target).is(".taskLabel")) {
-                $checkbox.prop("checked", !$checkbox.prop("checked"));
-            }
-        }
-        if ($checkbox.is(":checked")) {
-            console.log("Checked task ID:", $checkbox.attr("id"));
-            
-        }
     });
 });

@@ -1,28 +1,28 @@
 {
   "projects": [
     {
-      "id": 2,
+      "id": 1,
       "name": "To Do List",
       "tasks": [
         {
           "id": "t1",
           "title": "Design Layout",
-          "status": "completed"
+          "status": "toDo"
         },
         {
           "id": "t2",
           "title": "Finish ProjectContainer",
-          "status": "incomplete"
+          "status": "waiting"
         },
         {
           "id": "t3",
           "title": "Design TaskContainer Layout",
-          "status": "incomplete"
+          "status": "inProgress"
         },
         {
           "id": "t4",
           "title": "Finish TaskContainer",
-          "status": "incomplete"
+          "status": "finished"
         }
       ]
     }

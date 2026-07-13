@@ -103,7 +103,7 @@ input[type="checkbox"]:checked {
     text-decoration: none;
 }
 
-.epic {
+.column {
     border: 0;
     border-radius: 0.25rem 0.25rem 0 0;
     text-decoration: none;
