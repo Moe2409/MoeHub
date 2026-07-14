@@ -126,3 +126,7 @@ input[type="checkbox"]:checked {
 .finished {
     background-color: rgb(210, 255, 142);
 }
+
+.kanbanBoard {
+    height: 60vh;
+}

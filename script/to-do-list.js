@@ -31,7 +31,7 @@ $(document).ready(function () {
         $("#projectsContainer").empty();
         data.projects.forEach(function (project) {
             const totalTasks = project.tasks.length;
-            const completedTasks = project.tasks.filter(t => t.status === "completed").length;
+            const completedTasks = project.tasks.filter(t => t.status === "finished").length;
 
             const progressPercent = calculateProgressPercent(totalTasks, completedTasks)
 
@@ -87,6 +87,6 @@ $(document).ready(function () {
         if ($(event.target).closest(".taskRow, .column").length) {
             return;
         }
-        $(this).find(".tasksContainer").slideToggle();
+        $(this).find(".kanbanBoard").slideToggle();
     });
 });
