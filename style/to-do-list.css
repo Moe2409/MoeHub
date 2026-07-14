@@ -130,3 +130,16 @@ input[type="checkbox"]:checked {
 .kanbanBoard {
     height: 60vh;
 }
+
+.tasksContainer {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.taskRow {
+    margin: 0.1rem;
+    padding: 1rem;
+    border: 0.1rem solid white;
+    border-radius: 0.3rem;
+}

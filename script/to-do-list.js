@@ -13,13 +13,13 @@ $(document).ready(function () {
             $container.empty();
             
             if (tasks.length === 0) {
-                $container.append('<li class="no-tasks">Ingen oppgaver i denne kolonnen</li>');
+                $container.append('<li class="no-tasks">Nothing Here</li>');
                 return;
             }
 
             tasks.forEach(task => {
                 $container.append(`
-                    <li class="taskRow" data-id="${task.id}">
+                    <li class="taskRow" data-id="${task.id}" draggable="true">
                         ${task.title}
                     </li>
                 `);
