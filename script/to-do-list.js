@@ -20,7 +20,10 @@ $(document).ready(function () {
             tasks.forEach(task => {
                 $container.append(`
                     <li class="taskRow" data-id="${task.id}" draggable="true">
-                        ${task.title}
+                        <label>
+                            ${task.title}
+                            <input type="checkbox">
+                        </label>
                     </li>
                 `);
             });
