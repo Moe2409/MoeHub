@@ -22,20 +22,30 @@ $(document).ready(function () {
                     <li class="taskRow" data-id="${task.id}" draggable="true">
                         <label>
                             ${task.title}
-                            <svg class="moreOptions" viewbox="0 0 15 30">
-                                <circle cx="8" cy="0" r="5" fill="white" />
-                                <circle cx="8" cy="15" r="5" fill="white" />
-                                <circle cx="8" cy="30" r="5" fill="white" />
-                            </svg>
+                            <button type="button" class="moreOptionsButton" aria-label="More options">
+                                <svg class="moreOptionsIcon" viewbox="0 0 15 30">
+                                    <circle cx="8" cy="0" r="5" fill="white" />
+                                    <circle cx="8" cy="15" r="5" fill="white" />
+                                    <circle cx="8" cy="30" r="5" fill="white" />
+                                </svg>
+                            </button>
                         </label>
                     </li>
                 `);
             });
-        };
+        };  
 
         $("#projectsContainer").empty();
 
-        $("#projectsContainer").empty();
+        $("#projectsContainer").append(`
+            <div id="taskEditor">
+                <div id="taskEditorContent">
+                    <span class="exit">&times;</span>
+                    <p>test test test</p>
+                </div>
+            </div> 
+        `);
+
         data.projects.forEach(function (project) {
             const totalTasks = project.tasks.length;
             const completedTasks = project.tasks.filter(t => t.status === "finished").length;
@@ -43,7 +53,7 @@ $(document).ready(function () {
             const progressPercent = calculateProgressPercent(totalTasks, completedTasks)
 
             const projectHTML =  `
-                <article id="project${project.id}" data-project-id="${project.id}"" class="project">
+                <article id="project${project.id}" data-project-id="${project.id}" class="project">
                     <h2 class="projectTitle">${project.name}</h2>
                     
                     <div class="progressContainer">
@@ -95,5 +105,14 @@ $(document).ready(function () {
             return;
         }
         $(this).find(".kanbanBoard").slideToggle();
+    });
+
+    $("#projectsContainer").on("click", ".moreOptionsButton", function(event) {
+        event.stopPropagation(); 
+        $("#taskEditor").toggle();
+    });
+
+    $(document).on("click", ".exit", function() {
+        $("#taskEditor").toggle();
     });
 });
