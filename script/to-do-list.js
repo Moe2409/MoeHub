@@ -22,7 +22,11 @@ $(document).ready(function () {
                     <li class="taskRow" data-id="${task.id}" draggable="true">
                         <label>
                             ${task.title}
-                            <input type="checkbox">
+                            <svg class="moreOptions" viewbox="0 0 15 30">
+                                <circle cx="8" cy="0" r="5" fill="white" />
+                                <circle cx="8" cy="15" r="5" fill="white" />
+                                <circle cx="8" cy="30" r="5" fill="white" />
+                            </svg>
                         </label>
                     </li>
                 `);
