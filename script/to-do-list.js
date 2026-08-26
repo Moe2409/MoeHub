@@ -41,7 +41,9 @@ $(document).ready(function () {
             <div id="taskEditor">
                 <div id="taskEditorContent">
                     <span class="exit">&times;</span>
-                    <p>test test test</p>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                    <button>Move</button>
                 </div>
             </div> 
         `);
