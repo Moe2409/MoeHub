@@ -40,7 +40,12 @@ $(document).ready(function () {
         $("#projectsContainer").append(`
             <div id="taskEditor">
                 <div id="taskEditorContent">
-                    <span class="exit">&times;</span>
+                    <button class="closeButton">
+                        <svg class="exitIcon" viewBox="0 0 25 25">
+                            <line x1="5" y1="5" x2="20" y2="20" />
+                            <line x1="20" y1="5" x2="5" y2="20" />
+                        </svg>
+                    </button>
                     <button>Edit</button>
                     <button>Delete</button>
                     <button>Move</button>
@@ -114,7 +119,7 @@ $(document).ready(function () {
         $("#taskEditor").toggle();
     });
 
-    $(document).on("click", ".exit", function() {
+    $(document).on("click", ".closeButton", function() {
         $("#taskEditor").toggle();
     });
 });

@@ -192,3 +192,19 @@ input[type="checkbox"]:checked {
     align-items: center;
     justify-content: center;
 }
+
+.closeButton {
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    width: 2rem;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.exitIcon {
+    stroke: black;
+    stroke-width: 3;
+    fill: none;
+}
