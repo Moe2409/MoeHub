@@ -35,9 +35,7 @@ $(document).ready(function () {
             });
         };  
 
-        $("#projectsContainer").empty();
-
-        $("#projectsContainer").append(`
+        $("#projectsContainer").empty().append(`
             <div id="taskEditor">
                 <div id="taskEditorContent">
                     <button class="closeButton">
@@ -46,7 +44,7 @@ $(document).ready(function () {
                             <line x1="20" y1="5" x2="5" y2="20" />
                         </svg>
                     </button>
-                    <button>Edit</button>
+                    <h3 id="taskTitle">Title</h3>
                     <button>Delete</button>
                     <button>Move</button>
                 </div>
@@ -56,7 +54,6 @@ $(document).ready(function () {
         data.projects.forEach(function (project) {
             const totalTasks = project.tasks.length;
             const completedTasks = project.tasks.filter(t => t.status === "finished").length;
-
             const progressPercent = calculateProgressPercent(totalTasks, completedTasks)
 
             const projectHTML =  `
@@ -87,8 +84,9 @@ $(document).ready(function () {
 
             const defaultTasks = getTasks(project, "toDo");
             addTasksToContainer($projectElement.find(".tasksContainer"), defaultTasks);
+        });
 
-            $("#projectsContainer").on("click", ".column", function(event) {
+        $("#projectsContainer").on("click", ".column", function(event) {
                 event.stopPropagation(); 
 
                 const status = $(this).data("status"); 
@@ -102,7 +100,6 @@ $(document).ready(function () {
                     addTasksToContainer($container, oppgaver);
                 }
             });
-        });
     }).fail(function() {
         console.log("Failed to load json file")
     });
@@ -121,5 +118,18 @@ $(document).ready(function () {
 
     $(document).on("click", ".closeButton", function() {
         $("#taskEditor").toggle();
+    });
+
+    $(document).on("click", "#taskTitle", function(event) {
+        event.stopPropagation();
+
+        const $this = $(this);
+        const isEditable = $this.attr("contenteditable") === "true";
+
+        if (!isEditable) {
+            $this.attr("contenteditable", "true").focus();
+        } else {
+            $this.attr("contenteditable", "false");
+        }
     });
 });
