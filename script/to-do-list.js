@@ -59,7 +59,13 @@ $(document).ready(function () {
                         <option value="inProgress">In Progress</option>
                         <option value="finished">Finished</option>
                     </select>
-                    <button>Delete</button>
+                    <button>
+                        <svg class="deleteIcon" viewBox="50 50">
+                            <path d="M 10 15 40 15 40 10 10 10 10 15" stroke="red" fill="red" />
+                            <path d="M 12 18 38 18 36 48 14 48 12 18" stroke="red" fill="red" />
+                        </svg>
+                        Delete
+                    </button>
                     <button>Move</button>
                 </div>
             </div> 
