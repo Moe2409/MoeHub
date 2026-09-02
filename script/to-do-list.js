@@ -45,6 +45,20 @@ $(document).ready(function () {
                         </svg>
                     </button>
                     <h3 id="taskTitle">Title</h3>
+                    <label for=category">Category:</label>
+                    <select id="category" name="category">
+                        <option value="design">Design</option>
+                        <option value="coding">Coding</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="mechanics">Mechanics</option>
+                    </select>
+                    <label for=move">Move:</label>
+                    <select id="move" name="move">
+                        <option value="toDO">To Do</option>
+                        <option value="waiting">Waiting</option>
+                        <option value="inProgress">In Progress</option>
+                        <option value="finished">Finished</option>
+                    </select>
                     <button>Delete</button>
                     <button>Move</button>
                 </div>
