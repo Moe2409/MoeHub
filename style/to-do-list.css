@@ -178,9 +178,14 @@ input[type="checkbox"]:checked {
 #taskEditorContent {
     background-color: white;
     color: black;
-    padding: 2rem;
+    padding: 1rem;
     margin: 15% auto;
     width: 80vw;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    align-items: center;
 }
 
 .moreOptionsButton {
@@ -201,10 +206,60 @@ input[type="checkbox"]:checked {
     width: 2rem;
     stroke-linecap: round;
     stroke-linejoin: round;
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
 }
 
 .exitIcon {
     stroke: black;
     stroke-width: 3;
     fill: none;
+}
+
+#taskTitle {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.deleteButton {
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    width: 2.3rem;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: right;
+}
+
+.deleteIcon {
+    stroke: red;
+    stroke-width: 3;
+    fill: red;
+}
+
+.categoryGroup {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.moveGroup {
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.moveButton {
+    grid-column: 3;
+    grid-row: 3;
 }

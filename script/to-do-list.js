@@ -45,28 +45,31 @@ $(document).ready(function () {
                         </svg>
                     </button>
                     <h3 id="taskTitle">Title</h3>
-                    <label for=category">Category:</label>
-                    <select id="category" name="category">
-                        <option value="design">Design</option>
-                        <option value="coding">Coding</option>
-                        <option value="electronics">Electronics</option>
-                        <option value="mechanics">Mechanics</option>
-                    </select>
-                    <label for=move">Move:</label>
-                    <select id="move" name="move">
-                        <option value="toDO">To Do</option>
-                        <option value="waiting">Waiting</option>
-                        <option value="inProgress">In Progress</option>
-                        <option value="finished">Finished</option>
-                    </select>
-                    <button>
-                        <svg class="deleteIcon" viewBox="50 50">
-                            <path d="M 10 15 40 15 40 10 10 10 10 15" stroke="red" fill="red" />
-                            <path d="M 12 18 38 18 36 48 14 48 12 18" stroke="red" fill="red" />
+                    <div class="categoryGroup">
+                        <label for=category">Category:</label>
+                        <select id="category" name="category">
+                            <option value="design">Design</option>
+                            <option value="coding">Coding</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="mechanics">Mechanics</option>
+                        </select>
+                    </div>
+                    <div class="moveGroup">
+                        <label for=move">Move:</label>
+                        <select id="move" name="move">
+                            <option value="toDO">To Do</option>
+                            <option value="waiting">Waiting</option>
+                            <option value="inProgress">In Progress</option>
+                            <option value="finished">Finished</option>
+                        </select>
+                    </div>
+                    <button class="deleteButton">
+                        <svg class="deleteIcon" viewBox="0 0 50 50">
+                            <path d="M 10 10 L 20 10 L 20 7 L 30 7 L 30 10 L 40 10 L 40 14 L 10 14 L 10 10" />
+                            <path d="M 12 18 L 38 18 L 36 48 L 14 48 L 12 18" /> 
                         </svg>
-                        Delete
                     </button>
-                    <button>Move</button>
+                    <button class="moveButton">Move</button>
                 </div>
             </div> 
         `);
